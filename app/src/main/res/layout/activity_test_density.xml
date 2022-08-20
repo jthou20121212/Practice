@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".TestDensityActivity">
+
+        <Button
+            android:id="@+id/btn_320"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:text="宽度是 320dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_330"
+            android:layout_width="330dp"
+            android:layout_height="45dp"
+            android:text="宽度是 330dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_320" />
+
+        <Button
+            android:id="@+id/btn_340"
+            android:layout_width="340dp"
+            android:layout_height="45dp"
+            android:text="宽度是 340dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_330" />
+
+
+        <Button
+            android:id="@+id/btn_350"
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:text="宽度是 350dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_340" />
+
+
+        <Button
+            android:id="@+id/btn_360"
+            android:layout_width="360dp"
+            android:layout_height="45dp"
+            android:text="宽度是 360dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_350" />
+
+        <Button
+            android:id="@+id/btn_370"
+            android:layout_width="370dp"
+            android:layout_height="45dp"
+            android:text="宽度是 370dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_360" />
+
+        <Button
+            android:id="@+id/btn_380"
+            android:layout_width="380dp"
+            android:layout_height="45dp"
+            android:text="宽度是 380dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_370" />
+
+        <Button
+            android:id="@+id/btn_390"
+            android:layout_width="390dp"
+            android:layout_height="45dp"
+            android:text="宽度是 390dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_380" />
+
+        <Button
+            android:id="@+id/btn_400"
+            android:layout_width="400dp"
+            android:layout_height="45dp"
+            android:text="宽度是 400dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_390" />
+
+        <Button
+            android:id="@+id/btn_410"
+            android:layout_width="410dp"
+            android:layout_height="45dp"
+            android:text="宽度是 410dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_400" />
+
+        <Button
+            android:id="@+id/btn_420"
+            android:layout_width="420dp"
+            android:layout_height="45dp"
+            android:text="宽度是 420dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_410" />
+
+        <Button
+            android:id="@+id/btn_430"
+            android:layout_width="430dp"
+            android:layout_height="45dp"
+            android:text="宽度是 430dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_420" />
+
+        <Button
+            android:id="@+id/btn_440"
+            android:layout_width="440dp"
+            android:layout_height="45dp"
+            android:text="宽度是 440dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_430" />
+
+        <Button
+            android:id="@+id/btn_margin"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:text="margin = 1"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_440" />
+
+        <Button
+            android:id="@+id/btn_no_margin"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="no margin"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_margin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

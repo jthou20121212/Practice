@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk tools:overrideLibrary="androidx.security.identity.credential" />
+
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 读写文件权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.study.lifecycle.App"
+        android:allowBackup="false"
+        android:exported="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        tools:node="merge">
+        <activity
+            android:name=".ScaleableImageActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.constraintlayout.ConstraintLayoutActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.savedstate.SavedStateActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.viewmodel.ViewModelActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.livedata.SecondActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.livedata.EmptyActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.livedata.LiveDataActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.jthou.pro.xlog.DeleteLogActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.lifecycle.LifecycleActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.jthou.pro.xlog.XLogActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.viewbinding.ViewBindingActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.snaphelper.ZhihuActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.ScrollerTextViewActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.snaphelper.PagerSnapHelperActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.snaphelper.LinearSnapHelperActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.GradientActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.ToastWindowManagerBadTokenExceptionActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.LineHeightActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.ThreadPoolActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.popupwindow.PopupWindowActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.SparseArrayTestActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.PrettyJsonActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.JavaTestActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.ShadowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ParseALabelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KotlinTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LaunchAllowTaskReparentingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MemberLeakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MemberShakeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventDispatchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MessageMechanismActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MatrixActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhoneInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestDensityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RightScrollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScrollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TextViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PreviewPdfFileActivity"
+            android:configChanges="orientation|keyboardHidden|fontScale|locale|layoutDirection|screenSize|smallestScreenSize|screenLayout|uiMode|navigation|keyboard|colorMode|density"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VerticalStockActivity"
+            android:configChanges="orientation|keyboardHidden|fontScale|locale|layoutDirection|screenSize|smallestScreenSize|screenLayout|uiMode|navigation|keyboard|colorMode|density"
+            android:exported="false"
+            android:screenOrientation="sensor" /> <!-- https://github.com/markzhai/AndroidPerformanceMonitor/issues/144 -->
+        <activity
+            android:name="com.github.moduth.blockcanary.ui.DisplayActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.widget.ScaleableImageActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

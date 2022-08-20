@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.study.ScrollerTextViewActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@android:color/holo_blue_bright"
+        android:lineSpacingExtra="3dp"
+        android:lineSpacingMultiplier="1.2"
+        android:scrollbars="vertical"
+        android:text="近日，一位烘焙行业的知情人士告诉《最话》，盘踞在长沙的本土网红点心品牌墨茉点心局月销售额近期连续下滑，刚开业时一度达到100万，现在的单店月销售额只有30多万，而虎头局也面临同样的窘境，单店销售下滑，在长沙大本营目前是亏钱状态。
+故事的转折似乎来得太快了，虎头局、墨茉点心局分别成立于2019年和2020年，在此之前一直扮演着“甜心炸弹”的角色，无论是卡路里还是商业运营方面。有媒体报道，墨茉点心局的大本营长沙国金街门店，曾创下过单店月销售额百万+的惊人纪录。
+进入新的一年后，被吹在风口上的中式烘焙二子，它们的“粉红色泡泡”是会被进一步吹大，还是另一番光景还不好说。但新消费标杆企业喜茶此次爆出的裁员风波，对这两家年轻的公司来说肯定不是好消息。
+据《最话》了解，虎头局在年前已经开始接触投资人，急于寻求新一轮融资，目标是争取在今年3月份敲定协议。但到目前为止，还没有进一步的消息"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
