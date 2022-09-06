@@ -3,16 +3,13 @@ package com.jthou.pro.crazy
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.blankj.utilcode.util.LogUtils
 import com.jthou.pro.xlog.DeleteLogActivity
 import com.jthou.pro.xlog.XLogActivity
 import com.popupwindow.PopupWindowActivity
 import com.study.*
+import com.study.breakpoint.continuingly.DownloadActivity
 import com.study.constraintlayout.ConstraintLayoutActivity
 import com.study.lifecycle.LifecycleActivity
-import com.study.livedata.EmptyActivity
 import com.study.livedata.LiveDataActivity
 import com.study.savedstate.SavedStateActivity
 import com.study.snaphelper.LinearSnapHelperActivity
@@ -21,24 +18,13 @@ import com.study.snaphelper.ZhihuActivity
 import com.study.viewbinding.ViewBindingActivity
 import com.study.viewmodel.ViewModelActivity
 import com.study.widget.ScaleableImageActivity
-import com.tencent.mmkv.MMKV
 import splitties.activities.start
-import java.time.LocalDateTime
 
 class MainActivity : SwipeDismissBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // Utils.init(application)
-        MMKV.initialize(application)
-        MMKV.defaultMMKV().putString(MainActivity::javaClass.name, "test")
-        LogUtils.i("jthou", MMKV.defaultMMKV().getString(MainActivity::javaClass.name, null))
-        // listOf<String>().stream().toString()
-
-
-        // View.resolveSize(0, View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.EXACTLY))
-
     }
 
 //    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
@@ -97,7 +83,7 @@ class MainActivity : SwipeDismissBaseActivity() {
                 PhoneInfoActivity.launchActivity(this)
             }
             R.id.tv7 -> TextViewActivity.launchActivity(this)
-            R.id.tv8 ->  start<PreviewPdfFileActivity>()
+            R.id.tv8 -> start<PreviewPdfFileActivity>()
             R.id.tv10 -> start<MatrixActivity>()
             R.id.tv11 -> start<MessageMechanismActivity>()
             R.id.tv12 -> start<EventDispatchActivity>()
@@ -127,6 +113,7 @@ class MainActivity : SwipeDismissBaseActivity() {
             R.id.tv36 -> start<SavedStateActivity> {}
             R.id.tv37 -> start<ConstraintLayoutActivity> {}
             R.id.tv38 -> start<ScaleableImageActivity> {}
+            R.id.tv39 -> start<DownloadActivity> {}
         }
     }
 

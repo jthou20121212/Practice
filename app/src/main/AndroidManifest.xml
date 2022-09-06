@@ -156,6 +156,9 @@
         <activity
             android:name="com.study.widget.ScaleableImageActivity"
             android:exported="false" />
+        <activity
+            android:name="com.study.breakpoint.continuingly.DownloadActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

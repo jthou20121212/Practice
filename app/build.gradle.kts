@@ -8,7 +8,7 @@ android {
     compileSdk = 31
     defaultConfig {
         applicationId = "com.jthou.pro.crazy"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 31
         versionCode = 1
         versionName = "1.0"
@@ -100,6 +100,7 @@ dependencies {
         exclude(group = "androidx.appcompat", module = "appcompat")
     }
     implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation(project(mapOf("path" to ":fetch")))
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
@@ -126,7 +127,7 @@ dependencies {
     implementation("org.jsoup:jsoup:1.15.2")
 
     // https://github.com/Tencent/MMKV/blob/master/README_CN.md
-    implementation("com.tencent:mmkv-static:1.2.10")
+    implementation("com.tencent:mmkv:1.2.14")
 
     // https://developer.android.com/topic/libraries/architecture/datastore
     implementation("androidx.datastore:datastore:1.0.0")
