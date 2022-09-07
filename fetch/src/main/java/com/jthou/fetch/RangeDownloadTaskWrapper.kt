@@ -11,6 +11,7 @@ import java.io.IOException
 import java.io.RandomAccessFile
 import java.net.SocketTimeoutException
 import java.util.*
+import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.AtomicLong
@@ -33,7 +34,7 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
     private val downloadStatus = AtomicBoolean()
 
     // 下载任务对应的所有网络任务
-    private val downloadList = arrayListOf<Call>()
+    private val downloadList = CopyOnWriteArrayList<Call>()
 
     // 网络任务完成数量
     private val downloadFinishedCount = AtomicInteger()
@@ -159,7 +160,6 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
                             val newValue = downloadLength.addAndGet(length.toLong())
                             fetch.downloadListener?.downloadProgress(floor(newValue * 100f / contentLength).roundToInt())
                         }
-                        downloadList.remove(call)
                         val incrementAndGet = atomicInteger.incrementAndGet()
                         Log.i(Fetch.TAG, "incrementAndGet : $incrementAndGet")
                         if (incrementAndGet == Constants.THREAD_COUNT) {
@@ -182,6 +182,7 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
                         Log.i(Fetch.TAG, "下载超时再次发起下载任务")
                         fetch.threadPool.execute(copy(startIndex = currentRunnableDownloadLength))
                     } finally {
+                        downloadList.remove(call)
                         response.closeQuietly()
                     }
                 }

@@ -91,15 +91,15 @@ dependencies {
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
-    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.core:core-ktx:$kotlin_version")
     implementation("androidx.core:core-splashscreen:1.0.0-beta02")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
-    implementation("com.google.android.material:material:1.6.0") {
+    implementation("com.google.android.material:material:$material_version") {
         exclude(group = "androidx.fragment", module = "fragment")
         exclude(group = "androidx.appcompat", module = "appcompat")
     }
-    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("androidx.appcompat:appcompat:$appcompat_version")
     implementation(project(mapOf("path" to ":fetch")))
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
@@ -127,7 +127,7 @@ dependencies {
     implementation("org.jsoup:jsoup:1.15.2")
 
     // https://github.com/Tencent/MMKV/blob/master/README_CN.md
-    implementation("com.tencent:mmkv:1.2.14")
+    implementation("com.tencent:mmkv:$mmkv_version")
 
     // https://developer.android.com/topic/libraries/architecture/datastore
     implementation("androidx.datastore:datastore:1.0.0")
@@ -145,11 +145,11 @@ dependencies {
     implementation("com.tencent.mars:mars-xlog:1.2.6")
 
     implementation("com.google.code.gson:gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.10")
+    implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
     // https://github.com/square/retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:$retrofit2_version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit2_version")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version")
 
     // https://github.com/markzhai/AndroidPerformanceMonitor
     debugImplementation("com.github.markzhai:blockcanary-android:1.5.0")
