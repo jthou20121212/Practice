@@ -55,12 +55,22 @@ class Fetch internal constructor(builder: Builder) {
                 // 支持范围请求
                 // 如果 length 为 -1 说明是分块传输
                 val contentLength = response.headers[Constants.CONTENT_LENGTH]?.toLongOrNull() ?: -1L
-                if ((-1L != contentLength) && response.code == Constants.PARTIAL_CONTENT || response.headers[Constants.ACCEPT_RANGES] == Constants.BYTES) {
+                if ((-1L != contentLength) && (response.code == Constants.PARTIAL_CONTENT || response.headers[Constants.ACCEPT_RANGES] == Constants.BYTES)) {
+                    val contentLengthKey = getContentLengthKey(url)
+                    val localSaveLength = MMKV.defaultMMKV().decodeLong(contentLengthKey, -1L)
+                    if (localSaveLength == contentLength) {
+                        val dir = File(downloadDir, TAG.lowercase(Locale.getDefault()))
+                        val file = File(dir, url.getFileName())
+                        if (file.exists()) {
+                            downloadListener?.downloadCompleted(file)
+                        }
+                        return
+                    }
                     downloadListener?.supportRangeRequest(true)
-                    val md5 = url.md5().toHex()
                     // 记录文件长度后续考虑 md5 或者 etag ？
-                    MMKV.defaultMMKV().encode("$md5-${Constants.CONTENT_LENGTH.lowercase(Locale.getDefault())}", contentLength)
+                    MMKV.defaultMMKV().encode(contentLengthKey, contentLength)
                     val wrapper = RangeDownloadTaskWrapper(this@Fetch, url, contentLength)
+                    val md5 = url.md5().toHex()
                     hashMap[md5] = wrapper
                     // TODO 需要考虑处理没有开始下载就暂停/删除的情况
                     handler.post { wrapper.resume() }
@@ -106,6 +116,7 @@ class Fetch internal constructor(builder: Builder) {
             val key = "$md5-$threadId"
             MMKV.defaultMMKV().remove(key)
         }
+        MMKV.defaultMMKV().remove(getContentLengthKey(url))
     }
 
     fun isPause(url: String): Boolean {
@@ -117,11 +128,12 @@ class Fetch internal constructor(builder: Builder) {
     }
 
     fun getProgress(url: String): Int {
-        val md5 = url.md5().toHex()
-        val contentLength = MMKV.defaultMMKV().decodeLong("$md5-${Constants.CONTENT_LENGTH.lowercase(Locale.getDefault())}", -1L)
+        val contentLengthKey = getContentLengthKey(url)
+        val contentLength = MMKV.defaultMMKV().decodeLong(contentLengthKey, -1L)
         if (contentLength == -1L) return 0
         val blockLength = contentLength / Constants.THREAD_COUNT
         var downloadTotalLength = 0L
+        val md5 = url.md5().toHex()
         for (threadId in 0 until Constants.THREAD_COUNT) {
             val key = "$md5-$threadId"
             // 下载到位置

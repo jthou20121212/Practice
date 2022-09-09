@@ -27,7 +27,7 @@ class DownloadActivity : AppCompatActivity() {
 
         val downloadList = mutableListOf(
             "https://cos.appmeta.cn/c97ea0b7485c383bde799d7fd996e1125d99bc56.apk?sign=6a2934b218a00e0bc3b8fe1e8ac1f25e&t=1662020702",
-            "https://img.huxiucdn.com/pdf/Facebook.pdf?abc=234",
+            "https://dl.clipber.com/mac/copies_2_1_11.dmg",
             "https://vfx.mtime.cn/Video/2019/03/12/mp4/190312143927981075.mp4",
             "https://1.eu.dl.wireshark.org/osx/Wireshark%203.6.7%20Intel%2064.dmg",
             "https://r2---sn-5hne6nsd.gvt1.com/edgedl/android/studio/install/2021.2.1.16/android-studio-2021.2.1.16-mac.dmg?cms_redirect=yes&mh=SI&mip=188.166.96.124&mm=28&mn=sn-5hne6nsd&ms=nvh&mt=1662384028&mv=m&mvi=2&pl=19&rmhost=r1---sn-5hne6nsd.gvt1.com&shardbypass=sd&smhost=r3---sn-5hne6nzd.gvt1.com",
@@ -64,6 +64,9 @@ class DownloadActivity : AppCompatActivity() {
 
                 override fun downloadCompleted(file: File) {
                     Log.i("jthou", "downloadCompleted : ${file.absolutePath}")
+                    holder.btnDownload.post {
+                        holder.btnDownload.text = "下载完成"
+                    }
                 }
 
                 override fun downloadFailure(e: Exception) {

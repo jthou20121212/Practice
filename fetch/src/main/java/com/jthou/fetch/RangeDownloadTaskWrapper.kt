@@ -1,6 +1,5 @@
 package com.jthou.fetch
 
-import android.net.Uri
 import android.util.Log
 import com.tencent.mmkv.MMKV
 import okhttp3.*
@@ -75,7 +74,7 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
             val startIndex = MMKV.defaultMMKV().decodeLong(key, defaultIndex)
             // 线程结束下载的位置
             // 如果是最后一个线程,将剩下的文件全部交给这个线程完成
-            val endIndex = if (threadId == Constants.THREAD_COUNT - 1) contentLength else (threadId + 1) * blockLength - 1
+            val endIndex = if (threadId == Constants.THREAD_COUNT - 1) contentLength - 1 else (threadId + 1) * blockLength - 1
             if (endIndex <= startIndex) {
                 // 已下载完成
                 Log.i(Fetch.TAG, "此范围已下载完成")
@@ -138,7 +137,13 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
             call.enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     // 失败是否重试? okhttp 拦截器已经处理了重试逻辑还是失败不再重试
-                    fetch.downloadListener?.downloadFailure(e)
+                    if (e is SocketTimeoutException) {
+                        fetch.threadPool.execute(copy())
+                        Log.i(Fetch.TAG, "下载超时再次发起下载任务")
+                    } else {
+                        fetch.downloadListener?.downloadFailure(e)
+                    }
+                    downloadList.remove(call)
                 }
 
                 override fun onResponse(call: Call, response: Response) {
@@ -164,7 +169,7 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
                         Log.i(Fetch.TAG, "incrementAndGet : $incrementAndGet")
                         if (incrementAndGet == Constants.THREAD_COUNT) {
                             randomAccessFile.close()
-                            val fileName = Uri.parse(url).buildUpon().clearQuery().build().toString().getFileName()
+                            val fileName = url.getFileName()
                             val dir = File(fetch.downloadDir, Fetch.TAG.lowercase(Locale.getDefault()))
                             val downloadFile = File(dir, fileName)
                             val renameTo = tempFile.renameTo(downloadFile)
@@ -184,6 +189,7 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
                     } finally {
                         downloadList.remove(call)
                         response.closeQuietly()
+                        Log.i(Fetch.TAG, "finally")
                     }
                 }
             })
