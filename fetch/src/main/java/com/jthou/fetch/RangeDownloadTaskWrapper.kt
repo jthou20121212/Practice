@@ -74,6 +74,7 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
             val startIndex = MMKV.defaultMMKV().decodeLong(key, defaultIndex)
             // 线程结束下载的位置
             // 如果是最后一个线程,将剩下的文件全部交给这个线程完成
+            // 这里必须是 contentLength - 1 如果大于这个值部分服务器最后一个线程会返回完整文件
             val endIndex = if (threadId == Constants.THREAD_COUNT - 1) contentLength - 1 else (threadId + 1) * blockLength - 1
             if (endIndex <= startIndex) {
                 // 已下载完成

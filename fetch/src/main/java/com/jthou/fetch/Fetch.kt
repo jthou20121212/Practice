@@ -56,18 +56,18 @@ class Fetch internal constructor(builder: Builder) {
                 // 如果 length 为 -1 说明是分块传输
                 val contentLength = response.headers[Constants.CONTENT_LENGTH]?.toLongOrNull() ?: -1L
                 if ((-1L != contentLength) && (response.code == Constants.PARTIAL_CONTENT || response.headers[Constants.ACCEPT_RANGES] == Constants.BYTES)) {
-                    val contentLengthKey = getContentLengthKey(url)
-                    val localSaveLength = MMKV.defaultMMKV().decodeLong(contentLengthKey, -1L)
-                    if (localSaveLength == contentLength) {
+                    // 这种判断方式不太好 再保存一个是否下载完成的标记 ？
+                    if (getProgress(url) == 100) {
                         val dir = File(downloadDir, TAG.lowercase(Locale.getDefault()))
                         val file = File(dir, url.getFileName())
                         if (file.exists()) {
                             downloadListener?.downloadCompleted(file)
+                            return
                         }
-                        return
                     }
                     downloadListener?.supportRangeRequest(true)
                     // 记录文件长度后续考虑 md5 或者 etag ？
+                    val contentLengthKey = getContentLengthKey(url)
                     MMKV.defaultMMKV().encode(contentLengthKey, contentLength)
                     val wrapper = RangeDownloadTaskWrapper(this@Fetch, url, contentLength)
                     val md5 = url.md5().toHex()
