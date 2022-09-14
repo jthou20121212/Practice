@@ -12,12 +12,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.ActivityUtils
 import com.jthou.fetch.*
 import com.jthou.pro.crazy.R
 import java.io.File
+import java.net.SocketException
 import java.net.SocketTimeoutException
 
 class DownloadActivity : AppCompatActivity() {
+
+    private val fetch by lazy { Fetch.Builder(this).build() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +35,10 @@ class DownloadActivity : AppCompatActivity() {
             "https://vfx.mtime.cn/Video/2019/03/12/mp4/190312143927981075.mp4",
             "https://1.eu.dl.wireshark.org/osx/Wireshark%203.6.7%20Intel%2064.dmg",
             "https://r2---sn-5hne6nsd.gvt1.com/edgedl/android/studio/install/2021.2.1.16/android-studio-2021.2.1.16-mac.dmg?cms_redirect=yes&mh=SI&mip=188.166.96.124&mm=28&mn=sn-5hne6nsd&ms=nvh&mt=1662384028&mv=m&mvi=2&pl=19&rmhost=r1---sn-5hne6nsd.gvt1.com&shardbypass=sd&smhost=r3---sn-5hne6nzd.gvt1.com",
+            "https://dl.clipber.com/release/android/41.apk",
         )
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.adapter = DownloadAdapter(downloadList)
+        recyclerView.adapter = DownloadAdapter(fetch, downloadList)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
@@ -43,7 +48,7 @@ class DownloadActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    class DownloadAdapter(private val downloadList: MutableList<String>) : RecyclerView.Adapter<DownloadViewHolder>() {
+    class DownloadAdapter(private val fetch: Fetch, private val downloadList: MutableList<String>) : RecyclerView.Adapter<DownloadViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DownloadViewHolder {
             return DownloadViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_download, parent, false))
@@ -51,45 +56,6 @@ class DownloadActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: DownloadViewHolder, position: Int) {
             val url = downloadList[position]
-            val fetch = Fetch.Builder(holder.itemView.context).downloadListener(object : DownloadListener.SimpleDownloadListener() {
-                override fun supportRangeRequest(supported: Boolean) {
-                    holder.btnDownload.post {
-                        if (supported) {
-                            holder.btnDownload.text = "开始多线程下载"
-                        } else {
-                            holder.btnDownload.text = "不支持范围请求不能使用断点续传"
-                        }
-                    }
-                }
-
-                override fun downloadCompleted(file: File) {
-                    Log.i("jthou", "downloadCompleted : ${file.absolutePath}")
-                    holder.btnDownload.post {
-                        holder.btnDownload.text = "下载完成"
-                    }
-                }
-
-                override fun downloadFailure(e: Exception) {
-                    // 如果抛出超时异常
-                    if (e is SocketTimeoutException) {
-                        holder.btnDownload.post {
-                            holder.btnDownload.text = "读超时请重试"
-                        }
-                    }
-                }
-
-                override fun downloadProgress(progress: Int) {
-                    Log.i("jthou", "progress : $progress")
-                    holder.progressBar.progress = progress
-                    holder.tvFileName.post {
-                        holder.tvFileName.text = "${holder.tvFileName.tag}（$progress%）"
-                        holder.btnDownload.text = when(progress) {
-                            100 -> "下载完成"
-                            else -> "正在下载"
-                        }
-                    }
-                }
-            }).build()
             val fileName = fetch.getFileName(url)
             holder.tvFileName.tag = fileName
             holder.tvFileName.text = fileName
@@ -105,7 +71,48 @@ class DownloadActivity : AppCompatActivity() {
 
             holder.btnDownload.setOnClickListener {
                 holder.btnDownload.text = "正在检测是否支持多线程下载"
-                fetch.go(downloadList[position])
+                fetch.go(url, object : DownloadListener.SimpleDownloadListener() {
+                    override fun supportRangeRequest(supported: Boolean) {
+                        holder.btnDownload.post {
+                            if (supported) {
+                                holder.btnDownload.text = "开始多线程下载"
+                            } else {
+                                holder.btnDownload.text = "不支持范围请求不能使用断点续传"
+                            }
+                        }
+                    }
+
+                    override fun downloadCompleted(file: File) {
+                        Log.i("jthou", "downloadCompleted : ${file.absolutePath}")
+                        holder.btnDownload.post {
+                            holder.btnDownload.text = "下载完成"
+                        }
+                    }
+
+                    override fun downloadFailure(e: Exception) {
+                        // 如果抛出超时异常
+                        if (e is SocketTimeoutException) {
+                            holder.btnDownload.post {
+                                holder.btnDownload.text = "读超时请重试"
+                            }
+                        } else if (e is SocketException) {
+                            holder.btnDownload.post {
+                                holder.btnDownload.text = "已取消"
+                            }
+                        }
+                    }
+
+                    override fun downloadProgress(progress: Int) {
+                        ActivityUtils.getTopActivity()?.runOnUiThread {
+                            holder.progressBar.progress = progress
+                            "${holder.tvFileName.tag}（$progress%）".also { holder.tvFileName.text = it }
+                            holder.btnDownload.text = when(progress) {
+                                100 -> "下载完成"
+                                else -> "正在下载"
+                            }
+                        }
+                    }
+                })
             }
 
             holder.btnPause.setOnClickListener {

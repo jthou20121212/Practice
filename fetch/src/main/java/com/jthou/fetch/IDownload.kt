@@ -11,8 +11,6 @@ interface IDownload {
 
     fun pause()
 
-    fun resume()
-
-//    fun cancel()
+    fun download()
 
 }

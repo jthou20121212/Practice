@@ -2,15 +2,15 @@ package com.jthou.fetch
 
 import android.content.Context
 import android.net.Uri
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import com.tencent.mmkv.MMKV
+import com.tencent.mmkv.MMKVLogLevel
 import okhttp3.*
 import okio.IOException
 import java.io.File
 import java.util.*
 import java.util.concurrent.ExecutorService
+import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.math.floor
 import kotlin.math.roundToInt
 
@@ -27,30 +27,46 @@ class Fetch internal constructor(builder: Builder) {
         const val TAG = "Fetch"
 
         fun setup(context: Context) {
-            MMKV.initialize(context.applicationContext)
+            MMKV.initialize(context.applicationContext, MMKVLogLevel.LevelWarning)
         }
     }
 
     internal val downloadDir: File? = builder.downloadDir
     internal val threadPool: ExecutorService = builder.threadPool
-    internal val downloadListener: DownloadListener? = builder.downloadListener
 
-    internal val hashMap = mutableMapOf<String, IDownload>()
+    internal val hashMap = Collections.synchronizedMap(mutableMapOf<String, Download>())
 
-    val handler = Handler(Looper.getMainLooper())
-
-    fun go(url: String) {
+    fun go(url: String, callback: DownloadListener) {
         // 封装任务
+        val md5 = url.md5().toHex()
+        val iDownload = hashMap[md5]
+        if (iDownload != null) {
+            Log.i(TAG, "正在下载")
+            return
+        }
+
+        hashMap[md5] = Download(status = AtomicBoolean(false), callback = callback)
+
         val okHttpClient = OkHttpClient.Builder().build()
         val request = Request.Builder().url(url).head().build()
         val newCall = okHttpClient.newCall(request)
         newCall.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                // 网络失败抛出异常
-                downloadListener?.downloadFailure(e)
+                // 取消 java.net.SocketException: Socket closed
+                // 超时 java.net.SocketTimeoutException: Read timed out
+                val download = hashMap[md5] ?: return
+                download.callback.downloadFailure(e)
+                hashMap.remove(md5)
             }
 
             override fun onResponse(call: Call, response: Response) {
+                // 如果暂停了任务
+                if (hashMap[md5]!!.status.get()) {
+                    hashMap.remove(md5)
+                    Log.i(TAG, "head 方法返回后发现任务已暂停（取消）")
+                    return
+                }
+
                 // Log.i(TAG, response.toString())
                 // 支持范围请求
                 // 如果 length 为 -1 说明是分块传输
@@ -61,43 +77,49 @@ class Fetch internal constructor(builder: Builder) {
                         val dir = File(downloadDir, TAG.lowercase(Locale.getDefault()))
                         val file = File(dir, url.getFileName())
                         if (file.exists()) {
-                            downloadListener?.downloadCompleted(file)
+                            val download = hashMap[md5] ?: return
+                            download.callback.downloadCompleted(file)
+                            hashMap.remove(md5)
                             return
                         }
                     }
-                    downloadListener?.supportRangeRequest(true)
+
+                    // 如果已经暂停则 hashMap[md5] 为 null
+                    val download = hashMap[md5] ?: return
+
+                    download.call = null
+                    download.callback.supportRangeRequest(true)
                     // 记录文件长度后续考虑 md5 或者 etag ？
                     val contentLengthKey = getContentLengthKey(url)
                     MMKV.defaultMMKV().encode(contentLengthKey, contentLength)
                     val wrapper = RangeDownloadTaskWrapper(this@Fetch, url, contentLength)
-                    val md5 = url.md5().toHex()
-                    hashMap[md5] = wrapper
-                    // TODO 需要考虑处理没有开始下载就暂停/删除的情况
-                    handler.post { wrapper.resume() }
+                    wrapper.download()
+                    download.task = wrapper
                 } else {
-                    downloadListener?.supportRangeRequest(false)
+                    val download = hashMap[md5] ?: return
+                    download.callback.supportRangeRequest(false)
+                    hashMap.remove(md5)
                 }
             }
         })
-
-        // 加入线程池
-        // 支持使用不同的网络库下载
-
-        // 下载数据实时写入数据
+        hashMap[md5]!!.call = newCall
     }
 
     fun pause(url: String) {
-        hashMap[url.md5().toHex()]?.pause() ?: kotlin.run { Log.i(TAG, "pause 没有相应任务") }
-    }
+        val md5 = url.md5().toHex()
+        val download = hashMap[md5] ?: return
 
-    fun resume(url: String) {
-        hashMap[url.md5().toHex()]?.resume() ?: kotlin.run { Log.i(TAG, "resume 没有相应任务") }
+        download.status.set(true)
+        download.call?.cancel()
+        download.task?.pause()
+
+        // 避免还没真正开始下载就暂停了这个时候没有删除时机了所以要在这里删除
+        hashMap.remove(md5)
     }
 
     fun delete(url: String) {
-        val md5 = url.md5().toHex()
-        // 如果正在现在先暂停
-        hashMap[md5]?.pause() ?: kotlin.run { Log.i(TAG, "delete 没有相应任务") }
+        // 如果正在进行中先暂停
+        pause(url)
         val tempFileName = url.getFileNameNoExtension()
         val dir = File(downloadDir, TAG.lowercase(Locale.getDefault()))
         val tempFile = File(dir, tempFileName + Constants.TEMP_FILE_SUFFIX)
@@ -112,6 +134,7 @@ class Fetch internal constructor(builder: Builder) {
                 downloadFile.delete()
             }
         }
+        val md5 = url.md5().toHex()
         for (threadId in 0 until Constants.THREAD_COUNT) {
             val key = "$md5-$threadId"
             MMKV.defaultMMKV().remove(key)
@@ -119,8 +142,9 @@ class Fetch internal constructor(builder: Builder) {
         MMKV.defaultMMKV().remove(getContentLengthKey(url))
     }
 
+    // false 有可能是没有在进行中 再考虑考虑 用个枚举值 ?
     fun isPause(url: String): Boolean {
-        return (hashMap[url.md5().toHex()] as? RangeDownloadTaskWrapper)?.isPause ?: false
+        return hashMap[url.md5().toHex()]?.status?.get() ?: false
     }
 
     fun getFileName(url: String): String {
@@ -152,7 +176,6 @@ class Fetch internal constructor(builder: Builder) {
 
         internal var downloadDir: File? = context.filesDir
         internal var threadPool: ExecutorService = getDownloadThreadPool()
-        internal var downloadListener: DownloadListener? = null
 
         fun downloadDir(downloadDir: File) = apply {
             this.downloadDir = downloadDir
@@ -162,12 +185,14 @@ class Fetch internal constructor(builder: Builder) {
             this.threadPool = threadPool
         }
 
-        fun downloadListener(downloadListener: DownloadListener) = apply {
-            this.downloadListener = downloadListener
-        }
-
         fun build(): Fetch = Fetch(this)
 
     }
+
+    // task 对应的真正下载任务
+    // status true 表示暂停 false 表示下载中
+    // callback 回调
+    // call 对应发送的 head 请求
+    class Download(var task: IDownload? = null, val status: AtomicBoolean, val callback: DownloadListener, var call: Call? = null)
 
 }
