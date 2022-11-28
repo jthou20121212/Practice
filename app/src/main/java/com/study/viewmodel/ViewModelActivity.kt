@@ -14,7 +14,7 @@ class ViewModelActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.activity_view_model)
+         setContentView(R.layout.activity_view_model)
 
         val viewModel = ViewModelProvider(this)[TestViewModel::class.java]
 

@@ -7,8 +7,10 @@ import com.jthou.pro.xlog.DeleteLogActivity
 import com.jthou.pro.xlog.XLogActivity
 import com.popupwindow.PopupWindowActivity
 import com.study.*
+import com.study.asm.PrintMethodStackActivity
 import com.study.breakpoint.continuingly.DownloadActivity
 import com.study.constraintlayout.ConstraintLayoutActivity
+import com.study.jsoup.JsoupActivity
 import com.study.lifecycle.LifecycleActivity
 import com.study.livedata.LiveDataActivity
 import com.study.savedstate.SavedStateActivity
@@ -114,6 +116,8 @@ class MainActivity : SwipeDismissBaseActivity() {
             R.id.tv37 -> start<ConstraintLayoutActivity> {}
             R.id.tv38 -> start<ScaleableImageActivity> {}
             R.id.tv39 -> start<DownloadActivity> {}
+            R.id.tv40 -> start<JsoupActivity> {}
+            R.id.tv41 -> start<PrintMethodStackActivity> {}
         }
     }
 

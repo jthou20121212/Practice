@@ -1,5 +1,6 @@
 package com.jthou.pro.crazy
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -21,21 +22,20 @@ class TestViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.roundCornerView.corner = ConvertUtils.dp2px(8f).toFloat()
+        binding.roundCornerView.corner = ConvertUtils.dp2px(88f).toFloat()
 
         binding.textView.text = "第一次文本"
         binding.textView.text = "第二次文本"
 
-//        roundCornerView.postDelayed({
-//            val animator =
-//                ValueAnimator.ofFloat(roundCornerView.corner, 0f)
-//            animator.addUpdateListener {
-//                val animatedValue = it.animatedValue as Float
-//                roundCornerView.corner = animatedValue
-//                roundCornerView.invalidate()
-//            }
-//            animator.start()
-//        }, 1000)
+        binding.roundCornerView.postDelayed({
+            val animator = ValueAnimator.ofFloat(binding.roundCornerView.corner, 0f)
+            animator.addUpdateListener {
+                val animatedValue = it.animatedValue as Float
+                binding.roundCornerView.corner = animatedValue
+                binding.roundCornerView.invalidate()
+            }
+            animator.start()
+        }, 1000)
     }
 
 }

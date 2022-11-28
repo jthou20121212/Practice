@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme"
         tools:node="merge">
         <activity
-            android:name=".ScaleableImageActivity"
+            android:name="com.study.jsoup.JsoupActivity"
             android:exported="false" />
         <activity
             android:name="com.study.constraintlayout.ConstraintLayoutActivity"
@@ -158,6 +158,9 @@
             android:exported="false" />
         <activity
             android:name="com.study.breakpoint.continuingly.DownloadActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.asm.PrintMethodStackActivity"
             android:exported="false" />
     </application>
 

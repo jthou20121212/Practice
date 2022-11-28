@@ -37,5 +37,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
+    implementation("com.squareup.okhttp3:okhttp-tls:$okhttp_version")
     implementation("com.tencent:mmkv:$mmkv_version")
 }

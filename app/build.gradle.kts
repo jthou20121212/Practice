@@ -4,6 +4,11 @@ plugins {
     id("kotlin-kapt")
 }
 
+apply {
+    plugin<com.jthou.plugins.costtime.TimeCostPlugin>()
+    plugin<com.jthou.plugins.methodstack.PrintMethodStackPlugin>()
+}
+
 android {
     compileSdk = 31
     defaultConfig {
@@ -44,6 +49,7 @@ android {
         jniLibs.pickFirsts.add("lib/x86_64/libc++_shared.so")
         jniLibs.pickFirsts.add("lib/armeabi-v7a/libc++_shared.so")
         jniLibs.pickFirsts.add("lib/arm64-v8a/libc++_shared.so")
+        resources.excludes.add("META-INF/**")
     }
 
     namespace = "com.jthou.pro.crazy"
@@ -163,4 +169,10 @@ dependencies {
 
     // https://asm.ow2.io/index.html
     implementation("org.ow2.asm:asm:9.3")
+    implementation("org.ow2.asm:asm-tree:9.3")
+
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.0")
+
+    implementation("org.seleniumhq.selenium:selenium-java:4.4.0")
 }
