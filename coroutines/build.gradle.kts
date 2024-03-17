@@ -37,14 +37,15 @@ dependencies {
     implementation("androidx.core:core-ktx:$kotlin_version")
     implementation("androidx.appcompat:appcompat:$appcompat_version")
     implementation("com.google.android.material:material:$material_version")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
 
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.10")
-    implementation("org.seleniumhq.selenium:selenium-java:4.4.0")
-    implementation("io.github.bonigarcia:webdrivermanager:5.3.0")
+    implementation("org.seleniumhq.selenium:selenium-java:4.13.0")
+    implementation("io.github.bonigarcia:webdrivermanager:5.5.3")
     implementation("org.slf4j:slf4j-simple:1.6.1")
 
 }

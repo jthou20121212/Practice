@@ -9,8 +9,8 @@ import java.util.regex.Pattern
 
 suspend fun main(args: Array<String>) {
      WebDriverManager.chromedriver().setup()
-//    val userDir = System.getProperty("user.dir")
-//    System.setProperty("webdriver.chrome.driver", "$userDir/generics/driver/chromedriver")
+    val userDir = System.getProperty("user.dir")
+    System.setProperty("webdriver.chrome.driver", "$userDir/coroutines/driver/chromedriver")
 
     if (args.isEmpty() || args.size < 2) throw IllegalArgumentException("请确定要查询的 App 版本信息和要发送的机器人 key\n 妙投：m\n虎嗅：h")
 
