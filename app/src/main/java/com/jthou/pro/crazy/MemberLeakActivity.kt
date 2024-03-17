@@ -4,7 +4,7 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.jthou.fuckyou.MemberLeakManager
+import com.jthou.pro.crazy.MemberLeakManager
 import com.jthou.pro.crazy.databinding.ActivityMemberLeakBinding
 
 class MemberLeakActivity : AppCompatActivity() {

@@ -31,12 +31,12 @@ class RightScrollActivity : AppCompatActivity() {
         setContentView(R.layout.activity_right_scroll)
         mGestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
             override fun onFling(
-                e1: MotionEvent?,
-                e2: MotionEvent?,
+                e1: MotionEvent,
+                e2: MotionEvent,
                 velocityX: Float,
                 velocityY: Float
             ): Boolean {
-                val x = e1!!.x - e2!!.x
+                val x = e1.x - e2.x
                 val x2 = e2.x - e1.x
                 if (x > FLING_MIN_DISTANCE && abs(velocityX) > FLING_MIN_VELOCITY) {
                     Toast.makeText(this@RightScrollActivity, "向左手势", Toast.LENGTH_SHORT).show()
@@ -48,7 +48,7 @@ class RightScrollActivity : AppCompatActivity() {
         })
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
+    override fun onTouchEvent(event: MotionEvent): Boolean {
         return mGestureDetector.onTouchEvent(event)
     }
 

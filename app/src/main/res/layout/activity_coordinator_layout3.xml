@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="当爱奇艺、快手纷纷爬出亏损的泥潭，市场越发期待哔哩哔哩（下简称 B 站）盈亏平衡的捷报——然而，B 站刚递出的“成绩单”仍未达标，只靠大幅减亏勉强撑住面子。
+
+
+
+6 月 1 日晚间，B 站公布截至 2023 年 3 月 31 日第一季度未经审计的财务报告：
+
+
+
+营收端：B 站 Q1 总营收 50.69 亿元，同比微增 0.3%；净亏损 6.296 亿元，同比减亏 72%——减亏主要靠 B 站“勒紧裤腰带”省出来：该季度 B 站营业成本 40 亿元，同比减少 6.6%；总运营支出 25 亿元，同比下降 11%；此外，B 站销售和营销支出较 2022 年同期省出 3.74 亿元。
+
+
+
+从公布选角开始便高举着“种族平等”的2023年版《小美人鱼》，最近终于上映了。这并非迪士尼第一次将公主系列改编成真人电影，也不是迪士尼第一次被质疑在种族问题上大做文章，但围观群众关于《小美人鱼》电影愈演愈烈的争吵乃至谩骂，似乎表明这次的情况有些特殊。所以，为什么会是《小美人鱼》被骂得这么狠？
+" />
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="当爱奇艺、快手纷纷爬出亏损的泥潭，市场越发期待哔哩哔哩（下简称 B 站）盈亏平衡的捷报——然而，B 站刚递出的“成绩单”仍未达标，只靠大幅减亏勉强撑住面子。
+
+
+
+6 月 1 日晚间，B 站公布截至 2023 年 3 月 31 日第一季度未经审计的财务报告：
+
+
+
+营收端：B 站 Q1 总营收 50.69 亿元，同比微增 0.3%；净亏损 6.296 亿元，同比减亏 72%——减亏主要靠 B 站“勒紧裤腰带”省出来：该季度 B 站营业成本 40 亿元，同比减少 6.6%；总运营支出 25 亿元，同比下降 11%；此外，B 站销售和营销支出较 2022 年同期省出 3.74 亿元。
+
+
+
+从公布选角开始便高举着“种族平等”的2023年版《小美人鱼》，最近终于上映了。这并非迪士尼第一次将公主系列改编成真人电影，也不是迪士尼第一次被质疑在种族问题上大做文章，但围观群众关于《小美人鱼》电影愈演愈烈的争吵乃至谩骂，似乎表明这次的情况有些特殊。所以，为什么会是《小美人鱼》被骂得这么狠？
+
+
+
+
+
+
+
+
+
+
+
+
+
+" />
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="当爱奇艺、快手纷纷爬出亏损的泥潭，市场越发期待哔哩哔哩（下简称 B 站）盈亏平衡的捷报——然而，B 站刚递出的“成绩单”仍未达标，只靠大幅减亏勉强撑住面子。
+
+
+
+6 月 1 日晚间，B 站公布截至 2023 年 3 月 31 日第一季度未经审计的财务报告：
+
+
+
+营收端：B 站 Q1 总营收 50.69 亿元，同比微增 0.3%；净亏损 6.296 亿元，同比减亏 72%——减亏主要靠 B 站“勒紧裤腰带”省出来：该季度 B 站营业成本 40 亿元，同比减少 6.6%；总运营支出 25 亿元，同比下降 11%；此外，B 站销售和营销支出较 2022 年同期省出 3.74 亿元。
+
+
+
+从公布选角开始便高举着“种族平等”的2023年版《小美人鱼》，最近终于上映了。这并非迪士尼第一次将公主系列改编成真人电影，也不是迪士尼第一次被质疑在种族问题上大做文章，但围观群众关于《小美人鱼》电影愈演愈烈的争吵乃至谩骂，似乎表明这次的情况有些特殊。所以，为什么会是《小美人鱼》被骂得这么狠？
+
+
+
+
+
+
+
+
+
+
+
+
+
+" />
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="当爱奇艺、快手纷纷爬出亏损的泥潭，市场越发期待哔哩哔哩（下简称 B 站）盈亏平衡的捷报——然而，B 站刚递出的“成绩单”仍未达标，只靠大幅减亏勉强撑住面子。
+
+
+
+6 月 1 日晚间，B 站公布截至 2023 年 3 月 31 日第一季度未经审计的财务报告：
+
+
+
+营收端：B 站 Q1 总营收 50.69 亿元，同比微增 0.3%；净亏损 6.296 亿元，同比减亏 72%——减亏主要靠 B 站“勒紧裤腰带”省出来：该季度 B 站营业成本 40 亿元，同比减少 6.6%；总运营支出 25 亿元，同比下降 11%；此外，B 站销售和营销支出较 2022 年同期省出 3.74 亿元。
+
+
+
+从公布选角开始便高举着“种族平等”的2023年版《小美人鱼》，最近终于上映了。这并非迪士尼第一次将公主系列改编成真人电影，也不是迪士尼第一次被质疑在种族问题上大做文章，但围观群众关于《小美人鱼》电影愈演愈烈的争吵乃至谩骂，似乎表明这次的情况有些特殊。所以，为什么会是《小美人鱼》被骂得这么狠？
+
+
+
+
+
+
+
+
+
+
+
+
+
+" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="惊蛰"
+            android:textColor="@android:color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

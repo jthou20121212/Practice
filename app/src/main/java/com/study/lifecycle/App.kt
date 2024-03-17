@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.github.anrwatchdog.ANRWatchDog
 
 /**
  *
@@ -54,6 +55,8 @@ class App : Application() {
             }
 
         })
+
+        ANRWatchDog().start()
     }
 
 }

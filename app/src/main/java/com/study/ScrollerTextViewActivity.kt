@@ -7,6 +7,8 @@ import android.text.StaticLayout
 import android.view.MotionEvent
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ScreenUtils
 import com.jthou.pro.crazy.R
@@ -24,6 +26,9 @@ class ScrollerTextViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scroller_text_view)
         val textView = findViewById<TextView>(R.id.textView)
+
+        
+
         val viewHeight = 300.dp
         // val textHeight = textView.paint.measureText(textView.text.toString())
         val staticLayout = StaticLayout(
@@ -45,16 +50,13 @@ class ScrollerTextViewActivity : AppCompatActivity() {
                 MotionEvent.ACTION_MOVE -> {
                     var dy = lastY - event.rawY
                     lastY = event.rawY
-                    LogUtils.i("jthou", "dy : $dy")
                     // 刚进入就往上滑
                     if (total <= 0f && dy < 0) {
-                        LogUtils.i("jthou", "case1")
                         return@setOnTouchListener true
                     }
 
                     // 滑到底还往下滑
                     if (total >= vary && dy > 0) {
-                        LogUtils.i("jthou", "case2")
                         return@setOnTouchListener true
                     }
 
@@ -63,13 +65,10 @@ class ScrollerTextViewActivity : AppCompatActivity() {
                     }
 
                     if (dy == 0f) {
-                        LogUtils.i("jthou", "case3")
                         return@setOnTouchListener true
                     }
 
                     total += dy
-                    LogUtils.i("jthou", "total : $total")
-                    LogUtils.i("jthou", "scrollY : ${textView.scrollY}")
                     textView.scrollBy(0, dy.toInt())
                 }
             }

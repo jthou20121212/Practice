@@ -5,4 +5,69 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="pro_optional_name_code">名称代码</string>
+    <string name="pro_latest_price">最新价</string>
+    <string name="pro_quote_change">涨跌幅</string>
+    <string name="pro_quote_change_until_publish">本文发布至今涨跌幅</string>
+    <string name="pro_earnings_per_share">每股收益</string>
+    <string name="pro_net_assets">每股净资产</string>
+    <string name="pro_cash_content1">每股现金</string>
+    <string name="pro_cash_content2">含量</string>
+    <string name="pro_capital_reserve_per_share1">每股资本</string>
+    <string name="pro_capital_reserve_per_share2">公积金</string>
+    <string name="pro_flow_ratio">流动比</string>
+    <string name="pro_quick_ratio">速动比</string>
+    <string name="pro_roe1">净资产</string>
+    <string name="pro_roe2">收益率</string>
+    <string name="pro_net_profit_rate">净利润率</string>
+    <string name="pro_net_profit_growth_rate1">净利润</string>
+    <string name="pro_net_profit_growth_rate2">增长率</string>
+    <string name="pro_assets_and_liabilities">资产负债率</string>
+    <string name="pro_shareholders_equity_ratio">股东权益比</string>
+    <string name="pro_text_tail">…</string>
+
+    <string name="text">
+在他那间不算小的专卖店里，四周的酒柜上摆满了酒鬼酒，既有高端酒内参，也有红坛、紫坛等次高端产品。沿着酒柜边的地上，里里外外摆满了成箱的酒鬼酒，只有狭小的通道供人通行。
+
+
+
+“这（店内的酒）不算多，平时会更多，马上要补货了。”他说。谈及销售情况时，他用“马马虎虎”简单概括后，陷入了沉默。
+
+
+
+“酒鬼酒卖不动了。”这是熟悉白酒市场的业内人士和投资者对当下酒鬼酒的印象。
+
+
+
+过去几年，酒鬼酒连续多年高增长。就在2022年一季度，酒鬼酒还创造了最强季度表现，营收、归母净利润分别同比增长86.04%、94.46%。没想到短短一年后，在白酒消费呈现反弹态势之际，酒鬼酒的高增长奇迹却戛然而止，高增长变成负增长。
+
+
+
+如此巨大的逆转让投资者难以接受。据报道，在上周的2022年业绩网上说明会上，投资者质问酒鬼酒管理层，“酒能卖得动吗？2022年第一季度的高增长是不是勉强堆积出来的？”
+
+
+
+酒鬼酒股份有限公司董事长王浩称，2023年一季度的负增长，既有上年同期基数较高的原因，也有费用改革带来的短期影响。“2022年一季度处于白酒行业市场情绪较高的时点，经销商在2021年末至2022年初打款意愿也比较积极。”
+
+
+
+事实上，酒鬼酒的增长乏力，在2022年已有迹象。去年一整年，酒鬼酒高开低走，一季度后增速持续下行。2022年第二、三、四季度，酒鬼酒的营收分别同比增长5.25%、2.47%、-27.12%；归母净利润分别同比增长-18.74%、21.12%、-55.7%。
+
+
+
+酒鬼酒内部人士向《中国企业家》解释称，酒鬼酒动销确有不足，因此2022年四五月份，酒鬼酒开始推行费用改革，将渠道费用转移到终端市场，以期促进动销。
+
+
+
+但改革意味着此前通过酒企费用补贴、返利返点获得一定利润的经销商，利益在短期内大打折扣，导致打款意愿下降。“不过，长期来看，如果终端市场产品能够实现有效动销，经销商就能真正通过产品流通获得利润。”
+
+
+
+酒鬼酒的解释并不能说服投资者和业内人士。在他们看来，酒鬼酒业绩“跳崖”背后的根源，是过去几年压货增长的“雷”爆了。一位投资者这样评价酒鬼酒过去几年的高增长，“过去几年压货，导致虚假繁华，就像皇帝的新衣。”
+
+
+
+“如果整个中国白酒行业都是靠压货来增长，肯定会爆雷，只不过是哪一家先爆雷而已。目前来看，酒鬼酒已经出现爆雷了，整体库存难以消化，这是它目前的一个困境。”广东省食品安全保障促进会副会长、食品产业分析师朱丹蓬告诉《中国企业家》。</string>
+
 </resources>

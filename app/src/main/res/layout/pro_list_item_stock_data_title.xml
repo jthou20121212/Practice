@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="46dp"
+    android:orientation="horizontal"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp" >
+
+    <!-- 请不要删除这里控件的 id -->
+
+    <!-- 最新价 -->
+    <FrameLayout
+        android:id="@+id/fl_latest_price"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="share_price">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_latest_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:gravity="top|end"
+            android:text="@string/pro_latest_price"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+    <!-- 涨跌幅 -->
+    <FrameLayout
+        android:id="@+id/fl_quote_change"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="quote_change">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_quote_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:gravity="top|end"
+            android:text="@string/pro_quote_change"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+    <!-- 每股收益 -->
+    <FrameLayout
+        android:id="@+id/fl_earnings_per_share"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="mgsy">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_earnings_per_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:gravity="top|end"
+            android:text="@string/pro_earnings_per_share"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+    <!-- 每股净资产 -->
+    <FrameLayout
+        android:id="@+id/fl_net_assets"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="mgjzc">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_net_assets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:gravity="top|end"
+            android:text="@string/pro_net_assets"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+    <!-- 每股现金含量 -->
+    <RelativeLayout
+        android:id="@+id/rl_cash_content"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:tag="mgxjhl">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_cash_content1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="@string/pro_cash_content1"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+        <com.widget.sortable.SortableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_cash_content1"
+            android:layout_alignBottom="@+id/tv_cash_content1"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/tv_cash_content1"
+            android:src="@drawable/pro_sort_default_dark" />
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_cash_content2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cash_content1"
+            android:layout_alignEnd="@+id/tv_cash_content1"
+            android:includeFontPadding="false"
+            android:text="@string/pro_cash_content2"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <!-- 每股资本公积金 -->
+    <RelativeLayout
+        android:id="@+id/rl__capital_reserve_per_share1"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:tag="mgzbgj">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_capital_reserve_per_share1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="@string/pro_capital_reserve_per_share1"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+        <com.widget.sortable.SortableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_capital_reserve_per_share1"
+            android:layout_alignBottom="@+id/tv_capital_reserve_per_share1"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/tv_capital_reserve_per_share1"
+            android:src="@drawable/pro_sort_default_dark" />
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_capital_reserve_per_share2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_capital_reserve_per_share1"
+            android:layout_alignEnd="@+id/tv_capital_reserve_per_share1"
+            android:includeFontPadding="false"
+            android:text="@string/pro_capital_reserve_per_share2"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <!-- 流动比 -->
+    <FrameLayout
+        android:id="@+id/fl_flow_ratio"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="ldb">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_flow_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:gravity="top|end"
+            android:text="@string/pro_flow_ratio"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+    <!-- 速动比 -->
+    <FrameLayout
+        android:id="@+id/fl_quick_ratio"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="sdb">
+
+        <com.widget.sortable.SortableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:text="@string/pro_quick_ratio"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+    <!-- 净资产收益率 -->
+    <RelativeLayout
+        android:id="@+id/rl_roe"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:tag="jzcsyl">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_roe1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="@string/pro_roe1"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+        <com.widget.sortable.SortableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_roe1"
+            android:layout_alignBottom="@+id/tv_roe1"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/tv_roe1"
+            android:src="@drawable/pro_sort_default_dark" />
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_roe2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_roe1"
+            android:layout_alignEnd="@+id/tv_roe1"
+            android:includeFontPadding="false"
+            android:text="@string/pro_roe2"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <!-- 净利润率 -->
+    <FrameLayout
+        android:id="@+id/fl_net_profit_rate"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="jlrl">
+
+        <com.widget.sortable.SortableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:text="@string/pro_net_profit_rate"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+    <!-- 净利润增长率 -->
+    <RelativeLayout
+        android:id="@+id/rl_net_profit_growth_rate"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:tag="jlrzzl">
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_net_profit_growth_rate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="@string/pro_net_profit_growth_rate1"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+        <com.widget.sortable.SortableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_net_profit_growth_rate1"
+            android:layout_alignBottom="@+id/tv_net_profit_growth_rate1"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/tv_net_profit_growth_rate1"
+            android:src="@drawable/pro_sort_default_dark" />
+
+        <com.widget.sortable.SortableTextView
+            android:id="@+id/tv_net_profit_growth_rate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_net_profit_growth_rate1"
+            android:layout_alignEnd="@+id/tv_net_profit_growth_rate1"
+            android:includeFontPadding="false"
+            android:text="@string/pro_net_profit_growth_rate2"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <!-- 资产负债率 -->
+    <FrameLayout
+        android:id="@+id/fl__assets_and_liabilities"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="zcfjl">
+
+        <com.widget.sortable.SortableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:text="@string/pro_assets_and_liabilities"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+    <!-- 股东权益比 -->
+    <FrameLayout
+        android:id="@+id/fl_shareholders_equity_ratio"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="gdqyl">
+
+        <com.widget.sortable.SortableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="13dp"
+            android:drawableEnd="@drawable/pro_sort_default_dark"
+            android:drawablePadding="4dp"
+            android:text="@string/pro_shareholders_equity_ratio"
+            android:textColor="@color/pro_color_747b89"
+            android:textSize="12dp" />
+
+    </FrameLayout>
+
+</LinearLayout>

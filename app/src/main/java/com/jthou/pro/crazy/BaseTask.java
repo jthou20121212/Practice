@@ -1,4 +1,4 @@
-package com.jthou.fuckyou;
+package com.jthou.pro.crazy;
 
 import java.util.Objects;
 

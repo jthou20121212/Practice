@@ -34,7 +34,7 @@ class ScrollActivity : AppCompatActivity() {
 
     inner class ScrollAdapter : RecyclerView.Adapter<ScrollViewHolder>() {
 
-        val array = Array<String>(100){it ->
+        private val array = Array(100){
             "测试数据 $it"
         }
 

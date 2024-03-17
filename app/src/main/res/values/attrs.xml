@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomImageView">
+        <attr name="civ_corner_radius" format="dimension" />
+        <attr name="civ_corner_radius_top_left" format="dimension" />
+        <attr name="civ_corner_radius_top_right" format="dimension" />
+        <attr name="civ_corner_radius_bottom_left" format="dimension" />
+        <attr name="civ_corner_radius_bottom_right" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="HuxiuCommonView">
+        <!-- 圆角，只对背景颜色生效，四个角都生效 -->
+        <attr name="radius" format="dimension" />
+        <!-- 结合 radius 比如只有三个角需要设置，三个叫大小都是 radius 属性 -->
+        <attr name="radius_scope">
+            <flag name="top_left" value="1" />
+            <flag name="top_right" value="2" />
+            <flag name="bottom_right" value="4" />
+            <flag name="bottom_left" value="8" />
+        </attr>
+        <!-- 如果 4 个角大小不一致可以使用此方式，会覆盖 radius 属性 -->
+        <attr name="radius_top_left" format="dimension" />
+        <attr name="radius_top_right" format="dimension" />
+        <attr name="radius_bottom_right" format="dimension" />
+        <attr name="radius_bottom_left" format="dimension" />
+        <!-- 不透明度 -->
+        <!-- 不透明度与圆角属性用法一致 -->
+        <attr name="opacity" format="float" />
+        <!-- 不透明度生效范围 -->
+        <attr name="opacity_scope">
+            <!-- 文字颜色，反色， -->
+            <flag name="text_color" value="1" />
+            <!-- 文字颜色，只对以 _dark 结尾的颜色资源生效 -->
+            <flag name="text_color_dark" value="2" />
+            <!-- 文字颜色，只对以 _light 结尾的颜色资源生效，配置依然写 xxx_dark 会找到 _light 结尾的资源 -->
+            <flag name="text_color_light" value="4" />
+            <!-- 背景颜色，反色 -->
+            <flag name="background" value="8" />
+            <!-- 背景颜色，只对以 _dark 结尾的颜色资源生效 -->
+            <flag name="background_dark" value="16" />
+            <!-- 背景颜色，只对以 _light 结尾的颜色资源生效，配置依然写 xxx_dark 会找到 _light 结尾的资源 -->
+            <flag name="background_light" value="32" />
+        </attr>
+        <attr name="opacity_text_color" format="float" />
+        <attr name="opacity_text_color_dark" format="float" />
+        <attr name="opacity_text_color_light" format="float" />
+        <attr name="opacity_background" format="float" />
+        <attr name="opacity_background_dark" format="float" />
+        <attr name="opacity_background_light" format="float" />
+    </declare-styleable>
+
+</resources>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MatrixActivity">
 
-    <com.jthou.fuckyou.MatrixView
+    <com.jthou.pro.crazy.MatrixView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

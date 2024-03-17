@@ -3,15 +3,17 @@ package com.jthou.pro.crazy
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import android.util.Printer
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ThreadUtils
 import com.jthou.pro.crazy.R
+import com.jthou.pro.crazy.handler.Idler
 import java.util.*
 
 class MessageMechanismActivity : AppCompatActivity() {
 
     private var handler: Handler? = null
-    private var message:Message? = null
+    private var message: Message? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,7 +124,7 @@ class MessageMechanismActivity : AppCompatActivity() {
 
         val handlerThread = HandlerThread("test thread")
         handlerThread.start()
-        val handler = Handler(handlerThread.looper, object :Handler.Callback {
+        val handler = Handler(handlerThread.looper, object : Handler.Callback {
             override fun handleMessage(msg: Message): Boolean {
                 Log.i("jthou", "isMainThread : ${ThreadUtils.isMainThread()}")
                 return false
@@ -131,12 +133,25 @@ class MessageMechanismActivity : AppCompatActivity() {
         for (i in 0 until 5) {
             handler.sendEmptyMessage(i)
         }
+
+        val idler = Idler()
+        Looper.getMainLooper().queue.addIdleHandler(idler)
+        handler.post {
+            // nothing, just active
+        }
+        idler.waitForIdle()
+
+        handler.sendMessageDelayed(Message.obtain(), 1000)
+
+        Looper.getMainLooper().setMessageLogging {
+            Log.i("jthou", it)
+        }
     }
 
     private val mTestRunnable = object : Runnable {
         override fun run() {
             LogUtils.i("jthou", "mTestRunnable : $this")
-            handler?.postDelayed(this,1000)
+            handler?.postDelayed(this, 1000)
         }
     }
 

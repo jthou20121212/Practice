@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TimeCache {
+
     public static Map<String, Long> mStartTimes = new HashMap<>();
 
     public static Map<String, Long> mEndTimes = new HashMap<>();
@@ -20,9 +21,10 @@ public class TimeCache {
     public static void printlnTime(String methodName,String className) {
         String key = methodName + "," + className;
         if (!mStartTimes.containsKey(key) || !mEndTimes.containsKey(key)) {
-            System.out.println("className =" + key + "not exist");
+            // System.out.println("className =" + key + "not exist");
+        } else {
+            long currTime = mEndTimes.get(key) - mStartTimes.get(key);
+            // System.out.println("className =" + className +" methodName =" + methodName + "，time consuming " + currTime + "  ms");
         }
-        long currTime = mEndTimes.get(key) - mStartTimes.get(key);
-        System.out.println("className =" + className +" methodName =" + methodName + "，time consuming " + currTime + "  ms");
     }
 }

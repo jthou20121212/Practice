@@ -9,8 +9,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
-import com.jthou.fuckyou.Tab
-import com.jthou.fuckyou.ViewHelper
+import com.jthou.pro.crazy.Tab
 import com.jthou.pro.crazy.databinding.ActivityMyOptionalBinding
 
 
@@ -29,7 +28,7 @@ class MyOptionalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMyOptionalBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_my_optional)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
 

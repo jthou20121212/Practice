@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.study.NestedActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fore_tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2023年3月17日，李宁（02331.HK）发布了《2022年业绩公告》。公告显示，2022财年营收、净利润分别为258亿和40.6亿，同比增幅分别为14.3%、1.3%。
+
+
+
+2023年3月21日，安踏体育（02020.HK）发布了《2022年业绩公告》。公告显示，2022财年安踏营收、净利润分别为536.5亿和82.5亿，同比增幅分别为8.8%、0.3%。
+
+
+
+李宁抢先发布业绩预告，而且增速高于安踏，但二级市场更偏爱安踏。截至4月6日，安踏、李宁市值分别为3000亿港元和1540亿港元，动态市盈率分别为35.2倍、33.9倍。" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ class DeleteLogActivity : AppCompatActivity() {
 
     private val TAG = "DeleteLogActivity"
 
-    val XLOG_PATH by lazy { filesDir.path + "/" + "xlog" }
+    private val XLOG_PATH by lazy { filesDir.path + "/" + "xlog" }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

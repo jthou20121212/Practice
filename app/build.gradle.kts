@@ -5,14 +5,16 @@ plugins {
 }
 
 apply {
-    plugin<com.jthou.plugins.costtime.TimeCostPlugin>()
-    plugin<com.jthou.plugins.methodstack.PrintMethodStackPlugin>()
+    // plugin<com.jthou.plugins.costtime.TimeCostPlugin>()
+    // plugin<com.jthou.plugins.logfilter.LogFilterPlugin>()
+    // plugin<com.jthou.plugins.imagemonitor.ImageMonitorPlugin>()
+    // plugin<com.jthou.plugins.methodstack.PrintMethodStackPlugin>()
 }
 
 android {
     compileSdk = 31
     defaultConfig {
-        applicationId = "com.jthou.pro.crazy"
+        applicationId = "com.jthou.android.practice"
         minSdk = 24
         targetSdk = 31
         versionCode = 1
@@ -108,8 +110,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:$appcompat_version")
     implementation(project(mapOf("path" to ":fetch")))
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.louiscad.splitties:splitties-dimensions:$splitties_version")
     implementation("com.louiscad.splitties:splitties-views:$splitties_version")
@@ -118,8 +120,6 @@ dependencies {
     implementation("com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar")
 
     implementation("com.blankj:utilcodex:1.29.0")
-
-    implementation("com.scwang.smartrefresh:SmartRefreshLayout:1.1.2")
 
     implementation("com.google.android:flexbox:2.0.1")
 
@@ -150,7 +150,8 @@ dependencies {
     // https://github.com/Tencent/mars#mars_cn
     implementation("com.tencent.mars:mars-xlog:1.2.6")
 
-    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
     implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
     // https://github.com/square/retrofit
     implementation("com.squareup.retrofit2:retrofit:$retrofit2_version")
@@ -171,8 +172,26 @@ dependencies {
     implementation("org.ow2.asm:asm:9.3")
     implementation("org.ow2.asm:asm-tree:9.3")
 
-    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
-    implementation("io.reactivex.rxjava3:rxjava:3.0.0")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+    implementation("io.reactivex.rxjava3:rxjava:3.1.5")
 
     implementation("org.seleniumhq.selenium:selenium-java:4.4.0")
+
+    // https://github.com/scwang90/SmartRefreshLayout
+    // implementation("com.scwang.smartrefresh:SmartRefreshLayout:1.1.2")
+    implementation("io.github.scwang90:refresh-layout-kernel:2.0.5")
+    // 经典刷新头
+    implementation("io.github.scwang90:refresh-header-classics:2.0.5")
+
+    implementation("com.github.andyxialm:MultiStateLayout:0.1.1")
+
+    // 基础依赖包，必须要依赖
+    implementation("com.geyifeng.immersionbar:immersionbar:3.2.2")
+    // kotlin扩展（可选）
+    implementation("com.geyifeng.immersionbar:immersionbar-ktx:3.2.2")
+
+    implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.10")
+    implementation("androidx.core:core-ktx:1.7.0")
+    // 虚化效果
+    implementation("jp.wasabeef:blurry:4.0.1")
 }

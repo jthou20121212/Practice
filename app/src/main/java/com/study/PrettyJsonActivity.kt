@@ -6,22 +6,27 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.jthou.fuckyou.Tab
-import com.jthou.pro.crazy.R
+import com.jthou.pro.crazy.Tab
 import com.jthou.pro.crazy.databinding.ActivityPrettyJsonBinding
-import splitties.views.inflate
+import com.study.viewbinding.viewBinding
+import com.utils.log
 
 class PrettyJsonActivity : AppCompatActivity() {
 
+    private val binding by viewBinding(ActivityPrettyJsonBinding::inflate)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityPrettyJsonBinding.bind(inflate(R.layout.activity_pretty_json))
-        // val binding2 = inflate<ActivityPrettyJsonBinding>()
+        // val binding = ActivityPrettyJsonBinding.bind(inflate(R.layout.activity_pretty_json))
         setContentView(binding.root)
 
         val tab = Gson().fromJson("", Tab::class.java)
-        // val tabList = Gson().fromJson("", TypeToken<List<Tab>>(){}.getType())
-        val tabList = Gson().fromJson<List<Tab>>("[]", List::class.java)
+        // Caused by: java.lang.NullPointerException: Gson().fromJson("", obje…n<List<Tab?>?>() {}.type) must not be null
+        // val tabList1: List<Tab> = Gson().fromJson("", object : TypeToken<List<Tab?>?>() {}.type)
+        val tabList2 = Gson().fromJson<List<Tab>>("[]", List::class.java)
+
+        "tab : $tab".log()
+        "tabList2 : $tabList2".log()
 
         val json = """
             {
@@ -264,7 +269,7 @@ class PrettyJsonActivity : AppCompatActivity() {
   }
         """.trimIndent()
         val entity = Gson().fromJson(json, HotSpotInterpretation::class.java)
-        val result = GsonBuilder().setPrettyPrinting().create().toJson(entity)
+        val result = GsonBuilder().create().toJson(entity)
         Log.i("jthou", "result : $result")
         binding.textView.text = result
     }

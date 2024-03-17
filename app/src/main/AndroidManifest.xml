@@ -19,6 +19,36 @@
         android:theme="@style/AppTheme"
         tools:node="merge">
         <activity
+            android:name="com.jthou.pro.handler.BlockTestActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.since290.IndustrySituationActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.demo.SimpleActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.demo.PlateActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.clickarea.ExpandClickAreaActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.NestedActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.DynamicSetMarginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.WechatPullSmartRefreshLayoutActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.WechatPullRecyclerViewActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.WechatPullScrollViewActivity"
+            android:exported="false" />
+        <activity
             android:name="com.study.jsoup.JsoupActivity"
             android:exported="false" />
         <activity
@@ -106,7 +136,7 @@
             android:name=".MemberShakeActivity"
             android:exported="false" />
         <activity
-            android:name=".EventDispatchActivity"
+            android:name=".eventdispatch.EventDispatchActivity"
             android:exported="false" />
         <activity
             android:name=".MessageMechanismActivity"
@@ -161,6 +191,33 @@
             android:exported="false" />
         <activity
             android:name="com.study.asm.PrintMethodStackActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.asm.ImageMonitorActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.coordinator.CoordinatorLayout1Activity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.coordinator.CoordinatorLayout2Activity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.coordinator.CoordinatorLayout3Activity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.coordinator.CoordinatorLayout4Activity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.attrs.CustomAttrsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.jthou.pro.crazy.MyOptionalActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.jthou.pro.handler.MessageBarrierActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.jthou.pro.handler.MessagePrinterActivity"
             android:exported="false" />
     </application>
 

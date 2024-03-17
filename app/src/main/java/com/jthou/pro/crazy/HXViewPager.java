@@ -10,7 +10,7 @@ import android.view.animation.DecelerateInterpolator;
 
 import androidx.viewpager.widget.ViewPager;
 
-import com.jthou.fuckyou.SimpleAnimatorListener;
+import com.jthou.pro.crazy.SimpleAnimatorListener;
 
 /**
  * <pre>

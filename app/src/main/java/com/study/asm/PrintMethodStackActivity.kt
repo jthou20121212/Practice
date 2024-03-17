@@ -8,7 +8,9 @@ import android.view.View
 import android.webkit.JavascriptInterface
 import androidx.appcompat.app.AppCompatActivity
 import com.jthou.pro.crazy.databinding.ActivityPrintMethodStackBinding
+import com.study.asm.PrintMethodStack.printMethodStack
 import com.study.viewbinding.viewBinding
+import com.utils.printMethodStack2
 
 class PrintMethodStackActivity : AppCompatActivity() {
 
@@ -22,24 +24,24 @@ class PrintMethodStackActivity : AppCompatActivity() {
         binding.tv1.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 Log.i("PrintMethodStackActivity", "匿名内部类点击事件")
+                // printMethodStack2()
             }
         })
         binding.tv2.setOnClickListener {
-            Log.i("PrintMethodStackActivity", "lambda 点击事件")
+            // printMethodStack2()
         }
 
         handler.postDelayed({ testAnnotation() }, 5000)
     }
 
     fun onClick(view: View) {
-        Log.i("PrintMethodStackActivity", "xml 文件配置 onclick")
+        // printMethodStack2()
     }
 
     @JavascriptInterface
     fun testAnnotation() {
         Log.i("PrintMethodStackActivity", "JavascriptInterface 注解")
     }
-
 
 
     private fun privateMethod() {

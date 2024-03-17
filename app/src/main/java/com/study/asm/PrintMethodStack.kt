@@ -4,11 +4,16 @@ import android.util.Log
 
 object PrintMethodStack {
 
+
+    private const val ENABLE = true
+
     private val lineSeparator: String = System.getProperty("line.separator") ?: "\n"
     private const val UNKNOWN_SOURCE = "Unknown Source"
 
     @JvmStatic
     fun printMethodStack(methodName: String, lineNumber: String) {
+        if (!ENABLE) return
+
         val stackTraceString = Log.getStackTraceString(Throwable())
         val lineSplit = stackTraceString.split(lineSeparator).toMutableList()
         // 第一行是 java.lang.Throwable

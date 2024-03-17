@@ -1,73 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.study.ShadowActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/button1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="50dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="默认"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="50dp"
+        android:clipChildren="false"
+        tools:context="com.study.ShadowActivity">
 
-    <TextView
-        android:id="@+id/button2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorAccent"
-        android:elevation="10dp"
-        android:gravity="center"
-        android:text="elevation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/button1"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:background="@color/colorAccent"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="默认"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/button3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="translationZ"
-        android:translationZ="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/button2"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_marginTop="50dp"-->
+        <!--            android:background="@color/colorAccent"-->
+        <!--            android:elevation="10dp"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="elevation"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/button1" />-->
 
-    <TextView
-        android:id="@+id/button4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="MaterialShapeDrawable"
-        android:translationZ="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/button3"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_marginTop="50dp"-->
+        <!--            android:background="@color/colorAccent"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="translationZ"-->
+        <!--            android:translationZ="10dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/button2" />-->
 
-    <TextView
-        android:id="@+id/button5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="MaterialShapeDrawable"
-        android:translationZ="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/button4"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_marginTop="50dp"-->
+        <!--            android:background="@color/colorAccent"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="ShadowDrawableWrapper"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/button3" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!--        <TextView-->
+        <!--            android:id="@+id/button5"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_marginTop="50dp"-->
+        <!--            android:background="@color/colorAccent"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="ShadowUtils"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/button4" />-->
+
+        <TextView
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="MaterialShapeDrawable"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/button7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="ViewOutlineProvider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+        <com.study.shadow.CustomImageView
+            android:id="@+id/secondImage"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="50dp"
+            android:elevation="6dp"
+            android:outlineProvider="bounds"
+            android:scaleType="centerCrop"
+            android:src="@drawable/luffy"
+            app:civ_corner_radius_bottom_left="40dp"
+            app:civ_corner_radius_bottom_right="80dp"
+            app:civ_corner_radius_top_left="10dp"
+            app:civ_corner_radius_top_right="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button7" />
+
+        <com.study.shadow.OutlineCustomImageView
+            android:id="@+id/thirdImage"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="6dp"
+            android:outlineProvider="bounds"
+            android:scaleType="centerCrop"
+            android:src="@drawable/luffy"
+            app:civ_corner_radius_bottom_left="40dp"
+            app:civ_corner_radius_bottom_right="80dp"
+            app:civ_corner_radius_top_left="10dp"
+            app:civ_corner_radius_top_right="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/secondImage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

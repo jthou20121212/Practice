@@ -1,4 +1,4 @@
-package com.jthou.fuckyou
+package com.jthou.pro.crazy
 
 import com.blankj.utilcode.util.GsonUtils
 import com.google.gson.Gson
