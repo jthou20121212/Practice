@@ -3,7 +3,7 @@ package com.jthou.plugins.methodstack
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.Opcodes
 
-import com.jthou.plugins.hasAnnotation
+import com.jthou.plugins.utils.hasAnnotation
 import org.objectweb.asm.Handle
 import org.objectweb.asm.tree.*
 

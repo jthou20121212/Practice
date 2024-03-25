@@ -11,7 +11,6 @@ import com.google.android.material.shape.*
 import com.jthou.pro.crazy.databinding.ActivityShadowBinding
 import com.utils.dp
 import com.utils.log
-import org.checkerframework.checker.units.qual.h
 
 class ShadowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

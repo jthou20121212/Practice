@@ -46,6 +46,5 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.10")
     implementation("org.seleniumhq.selenium:selenium-java:4.13.0")
     implementation("io.github.bonigarcia:webdrivermanager:5.5.3")
-    implementation("org.slf4j:slf4j-simple:1.6.1")
 
 }

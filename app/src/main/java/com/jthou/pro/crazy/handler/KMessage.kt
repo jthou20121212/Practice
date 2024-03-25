@@ -25,9 +25,9 @@ class KMessage : Delayed {
     var callback: Runnable? = null
     var isAsynchronous : Boolean = false
 
-    override fun compareTo(other: Delayed?): Int {
+    override fun compareTo(other: Delayed): Int {
         return if (other is KMessage) (`when` - other.`when`).toInt()
-        else (getDelay(TimeUnit.MILLISECONDS) - other?.getDelay(TimeUnit.MILLISECONDS)!!).toInt()
+        else (getDelay(TimeUnit.MILLISECONDS) - other.getDelay(TimeUnit.MILLISECONDS)).toInt()
     }
 
     override fun getDelay(unit: TimeUnit): Long {

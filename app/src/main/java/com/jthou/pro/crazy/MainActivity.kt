@@ -17,6 +17,7 @@ import com.jthou.pro.crazy.databinding.ActivityMainBinding
 import com.jthou.pro.crazy.eventdispatch.EventDispatchActivity
 import com.jthou.pro.handler.BlockTestActivity
 import com.jthou.pro.handler.MessageBarrierActivity
+import com.jthou.pro.handler.MessageMechanismActivity
 import com.jthou.pro.handler.MessagePrinterActivity
 import com.jthou.pro.xlog.DeleteLogActivity
 import com.jthou.pro.xlog.XLogActivity
@@ -67,7 +68,7 @@ val examples = listOf(
         title = "Android 消息机制",
         data = listOf(
             ExampleItem(name = "测试阻塞", component = BlockTestActivity::class.java),
-            ExampleItem(name = "一些测试和验证", component = MessageBarrierActivity::class.java),
+            ExampleItem(name = "AOP 替换 App 内所有 Handler", component = MessageMechanismActivity::class.java),
             ExampleItem(name = "同步屏障消息", component = MessageBarrierActivity::class.java),
             ExampleItem(name = "MessagePrinter", component = MessagePrinterActivity::class.java),
         )

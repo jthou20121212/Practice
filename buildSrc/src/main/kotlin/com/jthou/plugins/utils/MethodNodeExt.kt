@@ -1,4 +1,4 @@
-package com.jthou.plugins
+package com.jthou.plugins.utils
 
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.tree.MethodNode

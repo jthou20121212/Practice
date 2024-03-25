@@ -11,7 +11,6 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.util.forEach
 import com.jthou.pro.crazy.R
 import com.utils.log
-import org.checkerframework.common.value.qual.BottomVal
 import kotlin.math.roundToInt
 
 

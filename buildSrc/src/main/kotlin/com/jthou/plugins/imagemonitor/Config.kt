@@ -1,9 +1,8 @@
+package com.jthou.plugins.imagemonitor
+
 import com.android.build.api.instrumentation.InstrumentationParameters
-import org.gradle.api.internal.model.DefaultObjectFactory
-import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
-import org.objectweb.asm.Opcodes
 import java.io.Serializable
 
 interface ImageMonitorParameters : InstrumentationParameters {
@@ -12,7 +11,7 @@ interface ImageMonitorParameters : InstrumentationParameters {
     val config: Property<ImageMonitorConfig>
 }
 
-public class ImageMonitorConfig(
+class ImageMonitorConfig(
     val src_class_name: String = "android/widget/ImageView",
     val dst_class_name: String = "com/study/asm/MonitorImageView",
     val weave_class_name: String = "com/study/asm/ImageMonitor",

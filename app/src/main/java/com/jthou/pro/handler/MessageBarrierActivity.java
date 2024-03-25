@@ -31,7 +31,7 @@ public class MessageBarrierActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barrier_message);
-        // 1. 发送一个同步
+        // 1. 发送一个同步屏障消息
         postSyncBarrier();
         // 2. 发送网络请求
         fetchData();

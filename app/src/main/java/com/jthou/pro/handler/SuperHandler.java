@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.utils.AnyExtKt;
 
+// 这种方式可以知道这个消息是哪里发的
 public class SuperHandler extends Handler {
 
     @Override

@@ -7,8 +7,9 @@ plugins {
 apply {
     // plugin<com.jthou.plugins.costtime.TimeCostPlugin>()
     // plugin<com.jthou.plugins.logfilter.LogFilterPlugin>()
-    // plugin<com.jthou.plugins.imagemonitor.ImageMonitorPlugin>()
+    plugin<com.jthou.plugins.imagemonitor.ImageMonitorPlugin>()
     // plugin<com.jthou.plugins.methodstack.PrintMethodStackPlugin>()
+    plugin<com.jthou.plugins.replacehandler.ReplaceHandlerPlugin>()
 }
 
 android {
@@ -174,8 +175,6 @@ dependencies {
 
     implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
     implementation("io.reactivex.rxjava3:rxjava:3.1.5")
-
-    implementation("org.seleniumhq.selenium:selenium-java:4.4.0")
 
     // https://github.com/scwang90/SmartRefreshLayout
     // implementation("com.scwang.smartrefresh:SmartRefreshLayout:1.1.2")

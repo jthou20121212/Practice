@@ -139,7 +139,7 @@
             android:name=".eventdispatch.EventDispatchActivity"
             android:exported="false" />
         <activity
-            android:name=".MessageMechanismActivity"
+            android:name="com.jthou.pro.handler.MessageMechanismActivity"
             android:exported="false" />
         <activity
             android:name=".MatrixActivity"
