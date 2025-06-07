@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong
  * @since 1.0.0
  * @date 05-09-2022
  */
-class NamingThreadFactory constructor(private val name: String, private val delegate: ThreadFactory) : ThreadFactory {
+class NamingThreadFactory(private val name: String, private val delegate: ThreadFactory) : ThreadFactory {
 
     private val threadCount: AtomicLong = AtomicLong()
 

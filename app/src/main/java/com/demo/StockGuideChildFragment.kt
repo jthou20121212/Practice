@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.ScreenUtils
 import com.gyf.immersionbar.ImmersionBar

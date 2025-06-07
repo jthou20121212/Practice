@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.setPadding
+import com.demo.MaterialDateActivity
 import com.demo.PlateActivity
+import com.demo.ProgressBarActivity
 import com.demo.SimpleActivity
 import com.gyf.immersionbar.ImmersionBar
 import com.jthou.pro.crazy.databinding.ActivityMainBinding
@@ -31,13 +33,13 @@ import com.study.PrettyJsonActivity
 import com.study.ScrollerTextViewActivity
 import com.study.ShadowActivity
 import com.study.SparseArrayTestActivity
-import com.study.ThreadPoolActivity
 import com.study.ToastWindowManagerBadTokenExceptionActivity
 import com.study.WechatPullScrollViewActivity
 import com.study.WechatPullSmartRefreshLayoutActivity
 import com.study.asm.ImageMonitorActivity
 import com.study.asm.PrintMethodStackActivity
 import com.study.attrs.CustomAttrsActivity
+import com.study.blur.ImageBlurActivity
 import com.study.breakpoint.continuingly.DownloadActivity
 import com.study.clickarea.ExpandClickAreaActivity
 import com.study.constraintlayout.ConstraintLayoutActivity
@@ -45,6 +47,7 @@ import com.study.coordinator.CoordinatorLayout1Activity
 import com.study.coordinator.CoordinatorLayout2Activity
 import com.study.coordinator.CoordinatorLayout3Activity
 import com.study.coordinator.CoordinatorLayout4Activity
+import com.study.coordinator.CoordinatorLayout6Activity
 import com.study.jsoup.JsoupActivity
 import com.study.lifecycle.LifecycleActivity
 import com.study.livedata.LiveDataActivity
@@ -53,12 +56,19 @@ import com.study.since290.IndustrySituationActivity
 import com.study.snaphelper.LinearSnapHelperActivity
 import com.study.snaphelper.PagerSnapHelperActivity
 import com.study.snaphelper.ZhihuActivity
+import com.study.text.MixtureTextViewActivity
+import com.study.thread.ThreadPoolActivity
 import com.study.viewbinding.ViewBindingActivity
 import com.study.viewbinding.viewBinding
 import com.study.viewmodel.ViewModelActivity
 import com.study.widget.ScaleableImageActivity
 import com.utils.dp
+import com.work.FragmentTestActivity
+import com.work.VideoLiftActivity
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import splitties.activities.start
 import splitties.views.onClick
+import java.util.concurrent.TimeUnit
 
 data class ExampleItem(val name: String, val component: Class<out Activity>)
 data class Example(val title: String, val data: List<ExampleItem>)
@@ -76,6 +86,8 @@ val examples = listOf(
     Example(
         title = "工作需求测试",
         data = listOf(
+            ExampleItem(name = "FragmentUtils", component = FragmentTestActivity::class.java),
+            ExampleItem(name = "图片模糊效果", component = ImageBlurActivity::class.java),
             ExampleItem(name = "XLog", component = XLogActivity::class.java),
             ExampleItem(name = "删除 XLog 文件", component = DeleteLogActivity::class.java),
             ExampleItem(name = "股票横竖屏", component = VerticalStockActivity::class.java),
@@ -103,7 +115,10 @@ val examples = listOf(
             ExampleItem(name = "内存泄漏", component = MemberLeakActivity::class.java),
             ExampleItem(name = "内存抖动", component = MemberShakeActivity::class.java),
             ExampleItem(name = "自动缩小字号", component = TextViewActivity::class.java),
-            ExampleItem(name = "我的自选", component = MyOptionalActivity::class.java)
+            ExampleItem(name = "我的自选", component = MyOptionalActivity::class.java),
+            ExampleItem(name = "图文混排、文字环绕图片", component = MixtureTextViewActivity::class.java),
+            ExampleItem(name = "拉起车机项目", component = StartupCarAppActivity::class.java),
+            ExampleItem(name = "虎嗅视频页面", component = VideoLiftActivity::class.java)
         )
     ),
     Example(
@@ -112,7 +127,8 @@ val examples = listOf(
             ExampleItem(name = "一个示例", component = CoordinatorLayout1Activity::class.java),
             ExampleItem(name = "又一个示例", component = CoordinatorLayout2Activity::class.java),
             ExampleItem(name = "又又一个示例", component = CoordinatorLayout3Activity::class.java),
-            ExampleItem(name = "又又又一个示例", component = CoordinatorLayout4Activity::class.java)
+            ExampleItem(name = "又又又一个示例", component = CoordinatorLayout4Activity::class.java),
+            ExampleItem(name = "又又又又一个示例", component = CoordinatorLayout6Activity::class.java)
         )
     ),
     Example(
@@ -174,6 +190,8 @@ val examples = listOf(
             ExampleItem(name = "手势检测判断滑动方向", component = RightScrollActivity::class.java),
             ExampleItem(name = "为什么不能滚动", component = ScrollActivity::class.java),
             ExampleItem(name = "这是测试的啥", component = SimpleActivity::class.java),
+            ExampleItem(name = "ProgressBar", component = ProgressBarActivity::class.java),
+            ExampleItem(name = "MaterialDatePicker", component = MaterialDateActivity::class.java),
         )
     )
 )
@@ -222,6 +240,14 @@ class MainActivity : SwipeDismissBaseActivity() {
                 }
             }
         }
+
+        start<ImageBlurActivity>()
+
+//        RxView.clicks(binding.tvTitle)
+//            .throttleFirst(1, TimeUnit.SECONDS)
+//            .subscribeOn(AndroidSchedulers.mainThread())
+//            .subscribe()
+
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {

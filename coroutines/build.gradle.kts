@@ -36,7 +36,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
     implementation("androidx.core:core-ktx:$kotlin_version")
     implementation("androidx.appcompat:appcompat:$appcompat_version")
-    implementation("com.google.android.material:material:$material_version")
+    implementation("com.google.android.material:material:$material_version") {
+        exclude(group = "androidx.recyclerview", module = "recyclerview")
+        exclude(group = "androidx.viewpager2", module = "viewpager2")
+    }
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

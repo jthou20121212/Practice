@@ -1,3 +1,4 @@
+@file:JvmName("Coroutine5")
 package com.jthou.coroutines
 
 import kotlinx.coroutines.*
@@ -7,15 +8,15 @@ import kotlinx.coroutines.*
 // 代码段8
 
 fun main() = runBlocking {
-    logX("Before launch.")  // 1
+    println("Before launch.")  // 1
 //               变化在这里
 //                  ↓
     launch(Dispatchers.Unconfined) {
-        logX("In launch.")  // 2
+        println("In launch.")  // 2
         delay(1000L)
-        logX("End launch.") // 3
+        println("End launch.") // 3
     }
-    logX("After launch")    // 4
+    println("After launch")    // 4
 }
 
 /*

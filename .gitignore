@@ -2,6 +2,7 @@ fetch/build
 buildSrc/build
 generics/build
 coroutines/build
+coroutines/driver
 *.iml
 .idea/
 .gradle/

@@ -85,7 +85,7 @@
 
             </LinearLayout>
 
-            <cn.refactor.multistatelayout.MultiStateLayout
+            <FrameLayout
                 android:id="@+id/multi_state_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -128,7 +128,7 @@
 
                 </com.widget.HXRefreshLayout>
 
-            </cn.refactor.multistatelayout.MultiStateLayout>
+            </FrameLayout>
 
         </LinearLayout>
 

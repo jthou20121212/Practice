@@ -27,8 +27,6 @@ class ScrollerTextViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scroller_text_view)
         val textView = findViewById<TextView>(R.id.textView)
 
-        
-
         val viewHeight = 300.dp
         // val textHeight = textView.paint.measureText(textView.text.toString())
         val staticLayout = StaticLayout(
@@ -42,37 +40,37 @@ class ScrollerTextViewActivity : AppCompatActivity() {
         )
         val textHeight = staticLayout.height + textView.lineHeight
         val vary = textHeight - viewHeight
-        textView.setOnTouchListener { _, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    lastY = event.rawY
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    var dy = lastY - event.rawY
-                    lastY = event.rawY
-                    // 刚进入就往上滑
-                    if (total <= 0f && dy < 0) {
-                        return@setOnTouchListener true
-                    }
-
-                    // 滑到底还往下滑
-                    if (total >= vary && dy > 0) {
-                        return@setOnTouchListener true
-                    }
-
-                    if (dy > vary - total) {
-                        dy = vary - total
-                    }
-
-                    if (dy == 0f) {
-                        return@setOnTouchListener true
-                    }
-
-                    total += dy
-                    textView.scrollBy(0, dy.toInt())
-                }
-            }
-            true
-        }
+//        textView.setOnTouchListener { _, event ->
+//            when (event.action) {
+//                MotionEvent.ACTION_DOWN -> {
+//                    lastY = event.rawY
+//                }
+//                MotionEvent.ACTION_MOVE -> {
+//                    var dy = lastY - event.rawY
+//                    lastY = event.rawY
+//                    // 刚进入就往上滑
+//                    if (total <= 0f && dy < 0) {
+//                        return@setOnTouchListener true
+//                    }
+//
+//                    // 滑到底还往下滑
+//                    if (total >= vary && dy > 0) {
+//                        return@setOnTouchListener true
+//                    }
+//
+//                    if (dy > vary - total) {
+//                        dy = vary - total
+//                    }
+//
+//                    if (dy == 0f) {
+//                        return@setOnTouchListener true
+//                    }
+//
+//                    total += dy
+//                    textView.scrollBy(0, dy.toInt())
+//                }
+//            }
+//            true
+//        }
     }
 }

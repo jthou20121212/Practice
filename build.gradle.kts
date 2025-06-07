@@ -2,6 +2,7 @@
 buildscript {
     repositories {
         google()
+        maven("https://maven.google.com")
         mavenCentral()
     }
     dependencies {

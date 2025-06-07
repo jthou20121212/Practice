@@ -30,6 +30,9 @@ public class JavaTestActivity extends AppCompatActivity {
             @Override
             public Unit invoke(Integer frameRate) {
                 Log.i(AnyExtKt.TAG, "frameRate : " + frameRate);
+
+                AnyExtKt.printMethodStack2();
+
                 return Unit.INSTANCE;
             };
         });

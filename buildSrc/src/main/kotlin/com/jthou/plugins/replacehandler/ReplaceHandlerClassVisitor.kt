@@ -14,11 +14,6 @@ class ReplaceHandlerClassVisitor(private val nextClassVisitor: ClassVisitor) : C
 
     override fun visit(version: Int, access: Int, name: String?, signature: String?, superName: String?, interfaces: Array<out String>?) {
         val match = TARGET_CLASS_NAME != name && SUPER_NAME == superName
-        if (SUPER_NAME == superName) {
-            "name : $name".log()
-            "superName : $superName".log()
-            "match : $match".log()
-        }
         super.visit(version, access, name, signature, if (match) TARGET_CLASS_NAME else superName, interfaces)
     }
 

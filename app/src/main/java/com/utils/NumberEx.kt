@@ -1,6 +1,9 @@
 package com.utils
 
+import android.graphics.BitmapFactory
+import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.ConvertUtils
+import com.blankj.utilcode.util.Utils
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -28,3 +31,8 @@ class Delegate : ReadOnlyProperty<Number, Int> {
 fun <T : Number> T.toDp() = ConvertUtils.px2dp(this.toFloat())
 
 fun <T : Number> T.toPx() = ConvertUtils.dp2px(this.toFloat())
+
+fun Int.color() = ContextCompat.getColor(Utils.getApp(), this)
+fun Int.drawable() = ContextCompat.getDrawable(Utils.getApp(), this)
+
+fun Int.bitmap() = BitmapFactory.decodeResource(Utils.getApp().resources, this)

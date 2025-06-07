@@ -33,7 +33,12 @@ class JsoupActivity : AppCompatActivity() {
             element?.`val`().log()
             (element is FormElement).log()
             element?.text().log()
+
+            val deferred = lifecycleScope.async {  }
+            val result = deferred.await()
         }
+
+
     }
 
 }

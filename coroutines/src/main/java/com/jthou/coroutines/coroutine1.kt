@@ -1,24 +1,49 @@
+@file:JvmName("Coroutine1")
 package com.jthou.coroutines
 
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.coroutines.cancellation.CancellationException
 
-// 不必关心代码逻辑，关心输出结果即可
-fun main() {
-    GlobalScope.launch(Dispatchers.IO) {
-        println("Coroutine started:${Thread.currentThread().name}")
-        delay(1000L)
-        println("Hello World!")
+// 代码段18
+
+fun main() = runBlocking {
+    val myExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        println("Catch exception: $throwable")
     }
 
-    println("After launch:${Thread.currentThread().name}")
-    Thread.sleep(2000L)
+    // 注意这里
+    val scope = CoroutineScope(coroutineContext + SupervisorJob() + myExceptionHandler)
+
+    scope.launch {
+        async {
+            delay(100L)
+        }
+
+        launch {
+            delay(100L)
+
+        }
+        launch {
+            delay(100L)
+            1 / 0 // 故意制造异常
+        }
+
+        delay(100L)
+    }
+
+    delay(1000L)
+    println("End")
 }
 
 /*
-输出结果：
-After launch:main
-Coroutine started:DefaultDispatcher-worker-1 @coroutine#1
+Catch exception: ArithmeticException: / by zero
+End
 */

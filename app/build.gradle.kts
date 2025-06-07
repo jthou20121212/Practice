@@ -101,12 +101,18 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
     implementation("androidx.core:core-ktx:$kotlin_version")
-    implementation("androidx.core:core-splashscreen:1.0.0-beta02")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.viewpager2:viewpager2:1.0.0") {
+        exclude(group = "androidx.recyclerview", module = "recyclerview")
+    }
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
     implementation("com.google.android.material:material:$material_version") {
         exclude(group = "androidx.fragment", module = "fragment")
         exclude(group = "androidx.appcompat", module = "appcompat")
+        exclude(group = "androidx.recyclerview", module = "recyclerview")
+        exclude(group = "androidx.viewpager2", module = "viewpager2")
     }
     implementation("androidx.appcompat:appcompat:$appcompat_version")
     implementation(project(mapOf("path" to ":fetch")))
@@ -120,7 +126,7 @@ dependencies {
 
     implementation("com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar")
 
-    implementation("com.blankj:utilcodex:1.29.0")
+    implementation("com.blankj:utilcodex:1.31.1")
 
     implementation("com.google.android:flexbox:2.0.1")
 
@@ -182,15 +188,24 @@ dependencies {
     // 经典刷新头
     implementation("io.github.scwang90:refresh-header-classics:2.0.5")
 
-    implementation("com.github.andyxialm:MultiStateLayout:0.1.1")
+    // implementation("com.github.andyxialm:MultiStateLayout:0.1.1")
 
     // 基础依赖包，必须要依赖
     implementation("com.geyifeng.immersionbar:immersionbar:3.2.2")
     // kotlin扩展（可选）
     implementation("com.geyifeng.immersionbar:immersionbar-ktx:3.2.2")
 
-    implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.10")
-    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("io.github.cymchad:BaseRecyclerViewAdapterHelper:3.0.14")
+
     // 虚化效果
     implementation("jp.wasabeef:blurry:4.0.1")
+    implementation("net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3")
+
+    // implementation("com.jakewharton.rxbinding3:rxbinding:3.1.0")
+    // implementation("com.github.JakeWharton.RxBinding:rxbinding:3.0.0")
+    implementation("com.jakewharton.rxbinding4:rxbinding:4.0.0")
+    implementation("com.jakewharton.rxbinding4:rxbinding-core:4.0.0")
+
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.13")
+
 }

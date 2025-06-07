@@ -20,8 +20,8 @@ class IndustrySituationActivity : AppCompatActivity() {
         }
         binding.root.postDelayed(3500) {
             val bitmap = Blurry.with(this)
-                .radius(10)
-                .sampling(6)
+                .radius(12)
+                .sampling(4)
                 .capture(binding.container).get()
             binding.imageView.setImageDrawable(BitmapDrawable(resources, bitmap))
         }

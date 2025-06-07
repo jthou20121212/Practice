@@ -2,15 +2,18 @@ package com.study
 
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.DrawableCompat.setTint
 import com.blankj.utilcode.util.ScreenUtils
-import com.google.android.material.shape.*
+import com.blankj.utilcode.util.ShadowUtils
+import com.google.android.material.shadow.ShadowDrawableWrapper
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.OffsetEdgeTreatment
+import com.google.android.material.shape.ShapeAppearanceModel
+import com.google.android.material.shape.TriangleEdgeTreatment
 import com.jthou.pro.crazy.databinding.ActivityShadowBinding
 import com.utils.dp
-import com.utils.log
 
 class ShadowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,14 +22,14 @@ class ShadowActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.run {
-            //        val drawable = ShadowDrawableWrapper(this, ColorDrawable(Color.RED), 5f, 20f, 50f)
-//        binding.button4.background = drawable
-//
-//        val config = ShadowUtils.Config().setShadowColor(Color.RED)
-//            .setShadowSize(20)
-//            .setShadowMaxSize(50)
-//            .setShadowRadius(5f)
-//        ShadowUtils.apply(binding.button5, config)
+            val drawable = ShadowDrawableWrapper(this@ShadowActivity, ColorDrawable(Color.RED), 5f, 20f, 50f)
+            binding.button4.background = drawable
+
+            val config = ShadowUtils.Config().setShadowColor(0x77888888)
+                .setShadowSize(20)
+                .setShadowMaxSize(50)
+                .setShadowRadius(5f)
+            ShadowUtils.apply(binding.button5, config)
 
             // button6 MaterialShapeDrawable
             val offset = (ScreenUtils.getScreenWidth() - 32.dp) / 2 - 18.dp

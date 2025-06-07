@@ -32,7 +32,10 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:$kotlin_version")
     implementation("androidx.appcompat:appcompat:$appcompat_version")
-    implementation("com.google.android.material:material:$material_version")
+    implementation("com.google.android.material:material:$material_version") {
+        exclude(group = "androidx.recyclerview", module = "recyclerview")
+        exclude(group = "androidx.viewpager2", module = "viewpager2")
+    }
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")

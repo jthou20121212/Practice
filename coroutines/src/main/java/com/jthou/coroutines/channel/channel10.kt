@@ -1,9 +1,7 @@
-package com.jthou.coroutines
+package com.jthou.coroutines.channel
 
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.produce
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 // 代码段12

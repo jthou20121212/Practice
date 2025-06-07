@@ -1,4 +1,4 @@
-package com.jthou.coroutines
+package com.jthou.coroutines.channel
 
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.produce

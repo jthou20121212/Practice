@@ -1,6 +1,5 @@
 package com.jthou.coroutines.flow
 
-import com.jthou.coroutines.logX
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flow
@@ -14,20 +13,20 @@ fun main() {
     val scope = CoroutineScope(Job())
     scope.launch {
         flow {
-            logX("上游")
+            println("上游")
             repeat(100) {
                 emit(it)
             }
         }.filter {
-            logX("中间")
+            println("中间")
             it > 2
         }
             .map { it * 2 }
             .onCompletion {
-                logX(it)
+                println(it)
             }
             .collect {
-                logX(it)
+                println(it)
                 delay(1000L)
             }
     }
@@ -35,7 +34,7 @@ fun main() {
     Thread.sleep(2000L)
 
     scope.cancel()
-    logX("结束")
+    println("结束")
 }
 
 /*

@@ -56,7 +56,7 @@ open class MonitorImageView @JvmOverloads constructor(
         val viewWidth = measuredWidth
         val viewHeight = measuredHeight
         val imageSize = calculateImageSize(d)
-        val pageName = ActivityUtils.getActivityByContext(context).javaClass.name
+        val pageName = ActivityUtils.getActivityByContext(context)?.javaClass?.name
         if (imageSize > MAX_ALARM_IMAGE_SIZE) {
             log(log = "$pageName ：图片大小超标 -> $imageSize")
         }

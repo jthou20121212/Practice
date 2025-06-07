@@ -6,6 +6,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.github.anrwatchdog.ANRWatchDog
+import leakcanary.LeakCanary
 
 /**
  *

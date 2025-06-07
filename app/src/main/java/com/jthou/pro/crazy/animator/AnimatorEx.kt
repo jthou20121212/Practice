@@ -10,7 +10,7 @@ fun ValueAnimator.addLifecycleObserver(lifecycleOwner: LifecycleOwner) {
     lifecycleOwner.lifecycle.addObserver(AnimatorLifecycleObserver(this))
 }
 
-class AnimatorLifecycleObserver constructor(private val animator: ValueAnimator) : LifecycleEventObserver {
+class AnimatorLifecycleObserver(private val animator: ValueAnimator) : LifecycleEventObserver {
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
         if (source.lifecycle.currentState == Lifecycle.State.DESTROYED) {

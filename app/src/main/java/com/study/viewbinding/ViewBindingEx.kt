@@ -30,29 +30,31 @@ fun <VB : ViewBinding> ComponentActivity.viewBinding(viewBinder: (LayoutInflater
 }
 
 // 需要使用 Activity 中调用 setContentView()
-fun <VB : ViewBinding> ComponentActivity.viewBinding2(viewBinder: (LayoutInflater, ViewGroup, Boolean) -> VB): ReadOnlyProperty<ComponentActivity, VB> = ActivityViewBindingProperty {
-    viewBinder(layoutInflater, requireViewByIdCompat(android.R.id.content), true)
-}
+fun <VB : ViewBinding> ComponentActivity.viewBinding2(viewBinder: (LayoutInflater, ViewGroup, Boolean) -> VB): ReadOnlyProperty<ComponentActivity, VB> =
+    ActivityViewBindingProperty {
+        viewBinder(layoutInflater, requireViewByIdCompat(android.R.id.content), true)
+    }
 
 // 不需要调用 setContentView()
 fun <VB : ViewBinding> ComponentActivity.viewBinding3(viewBinder: (View) -> VB, @LayoutRes layoutRes: Int): ReadOnlyProperty<ComponentActivity, VB> = ActivityViewBindingProperty {
     viewBinder(layoutInflater.inflate(layoutRes, null)).apply { setContentView(root) }
 }
 
-class ActivityViewBindingProperty<in A : ComponentActivity, out V : ViewBinding>(viewBinder: (A) -> V): LifecycleViewBindingProperty<A, V>(viewBinder) {
+class ActivityViewBindingProperty<in A : ComponentActivity, out V : ViewBinding>(viewBinder: (A) -> V) : LifecycleViewBindingProperty<A, V>(viewBinder) {
     override fun getLifecycleOwner(thisRef: A): LifecycleOwner {
         return thisRef
     }
 }
 
 @Suppress("UNCHECKED_CAST")
-inline fun <F: Fragment, VB : ViewBinding> Fragment.viewBinding(
+inline fun <F : Fragment, VB : ViewBinding> Fragment.viewBinding(
     crossinline viewBinder: (View) -> VB,
     crossinline viewProvider: (F) -> View = Fragment::requireView
-): ViewBindingProperty<F, VB> = when(this){
+): ViewBindingProperty<F, VB> = when (this) {
     is DialogFragment -> DialogFragmentViewBindingProperty { fragment: F ->
         viewBinder(viewProvider(fragment))
     } as ViewBindingProperty<F, VB>
+
     else -> FragmentViewBindingProperty { fragment: F ->
         viewBinder(viewProvider(fragment))
     }
@@ -93,9 +95,9 @@ interface ViewBindingProperty<in T : Any, out V : ViewBinding> : ReadOnlyPropert
     fun clear()
 }
 
-abstract class LifecycleViewBindingProperty<in T: Any, out V: ViewBinding> (
+abstract class LifecycleViewBindingProperty<in T : Any, out V : ViewBinding>(
     private val viewBinder: (T) -> V
-        ) : ViewBindingProperty<T, V> {
+) : ViewBindingProperty<T, V> {
 
     private var viewBindingGlobal: V? = null
 

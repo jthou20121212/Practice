@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.jthou.pro.crazy.R;
+import com.jthou.pro.crazy.handler.KMessage;
 import com.utils.AnyExtKt;
+
+import java.util.concurrent.DelayQueue;
 
 public class BlockTestActivity extends AppCompatActivity {
 
+    private final DelayQueue<KMessage> queue  = new DelayQueue<>();
     private final Object mLock = new Object();
     private boolean mNotify;
 
@@ -55,6 +59,14 @@ public class BlockTestActivity extends AppCompatActivity {
                 AnyExtKt.log("走你");
             }
         });
+
+        try {
+            KMessage take = queue.take();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        throw new RuntimeException("Main thread loop unexpectedly exited");
     }
 
 

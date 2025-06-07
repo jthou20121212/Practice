@@ -19,6 +19,9 @@
         android:theme="@style/AppTheme"
         tools:node="merge">
         <activity
+            android:name=".StartupCarAppActivity"
+            android:exported="false" />
+        <activity
             android:name="com.jthou.pro.handler.BlockTestActivity"
             android:exported="false" />
         <activity
@@ -86,6 +89,7 @@
             android:exported="false" />
         <activity
             android:name="com.study.ScrollerTextViewActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name="com.study.snaphelper.PagerSnapHelperActivity"
@@ -103,7 +107,7 @@
             android:name="com.study.LineHeightActivity"
             android:exported="false" />
         <activity
-            android:name="com.study.ThreadPoolActivity"
+            android:name="com.study.thread.ThreadPoolActivity"
             android:exported="false" />
         <activity
             android:name="com.popupwindow.PopupWindowActivity"
@@ -208,16 +212,38 @@
             android:name="com.study.coordinator.CoordinatorLayout4Activity"
             android:exported="false" />
         <activity
+            android:name="com.study.coordinator.CoordinatorLayout6Activity"
+            android:exported="false" />
+        <activity
             android:name="com.study.attrs.CustomAttrsActivity"
             android:exported="false" />
         <activity
-            android:name="com.jthou.pro.crazy.MyOptionalActivity"
+            android:name=".MyOptionalActivity"
             android:exported="false" />
         <activity
             android:name="com.jthou.pro.handler.MessageBarrierActivity"
             android:exported="false" />
         <activity
             android:name="com.jthou.pro.handler.MessagePrinterActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.text.MixtureTextViewActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.work.FragmentTestActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.work.VideoLiftActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.demo.ProgressBarActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.demo.MaterialDateActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name="com.study.blur.ImageBlurActivity"
             android:exported="false" />
     </application>
 

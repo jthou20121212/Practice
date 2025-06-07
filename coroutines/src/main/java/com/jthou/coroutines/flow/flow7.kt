@@ -1,6 +1,5 @@
 package com.jthou.coroutines.flow
 
-import com.jthou.coroutines.logX
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
@@ -8,22 +7,22 @@ import kotlinx.coroutines.runBlocking
 // 代码段11
 fun main() = runBlocking {
     val flow = flow {
-        logX("Start")
+        println("Start")
         emit(1)
-        logX("Emit: 1")
+        println("Emit: 1")
         emit(2)
-        logX("Emit: 2")
+        println("Emit: 2")
         emit(3)
-        logX("Emit: 3")
+        println("Emit: 3")
     }
 
     flow.filter {
-        logX("Filter: $it")
+        println("Filter: $it")
         it > 2
     }
         .flowOn(Dispatchers.IO)  // 注意这里
         .collect {
-            logX("Collect $it")
+            println("Collect $it")
         }
 }
 
