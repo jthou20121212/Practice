@@ -52,10 +52,5 @@ public class OrderedExecutionWithCountDownLatch {
         thread1.start();
         thread2.start();
         thread3.start();
-
-        // 等待所有线程完成
-        thread1.join();
-        thread2.join();
-        thread3.join();
     }
 }

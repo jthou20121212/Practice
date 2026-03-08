@@ -8,15 +8,18 @@
     tools:context="com.demo.PlateActivity">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
+        android:id="@+id/tab_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FFF"
-        android:minHeight="?attr/actionBarSize"
-        app:tabIndicatorColor="#00000000"
-        app:tabRippleColor="#00000000"
-        app:tabSelectedTextColor="#000000"
-        app:tabTextColor="#929299" />
+        app:tabGravity="start"
+        app:tabIndicatorColor="#ee2222"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed"
+        app:tabPaddingEnd="16dp"
+        app:tabPaddingStart="16dp"
+        app:tabSelectedTextColor="#FF000000"
+        app:tabTextColor="#66000000" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"

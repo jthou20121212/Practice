@@ -1,25 +1,19 @@
 @file:JvmName("Coroutine3")
 package com.jthou.coroutines
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-// 不必关心代码逻辑，关心输出结果即可
-fun main() {
-    GlobalScope.launch(Dispatchers.IO) {
-        println("Coroutine started:${Thread.currentThread().name}")
-        delay(1000L)
-        println("Hello World!")
+fun main() = runBlocking {
+    val deferred: Deferred<String> = async {
+        println("In async:${Thread.currentThread().name}")
+        delay(1000L) // 模拟耗时操作
+        println("In async after delay!")
+        return@async "Task completed!"
     }
 
-    println("After launch:${Thread.currentThread().name}")
-    Thread.sleep(2000L)
+    // 不再调用 deferred.await()
+    delay(2000L)
 }
-
-/*
-输出结果：
-After launch:main
-Coroutine started:DefaultDispatcher-worker-1 @coroutine#1
-*/

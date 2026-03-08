@@ -1,35 +1,36 @@
-package com.jthou.coroutines
+package com.jthou.coroutines.flow
 
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 
-// 代码段4
-fun main() = runBlocking {
-    flowOf(1, 2, 3, 4, 5)
-        .filter {
-            println("filter: $it")
-            it > 2
-        }
-        .map {
-            println("map: $it")
-            it * 2
-        }
-        .take(2)
-        .onStart { println("onStart") } // 注意这里
-        .collect {
-            println("collect: $it")
-        }
-}
-
-/*
-输出结果
-onStart
-filter: 1
-filter: 2
-filter: 3
-map: 3
-collect: 6
-filter: 4
-map: 4
-collect: 8
-*/
+//// 代码段3
+//
+//fun main() = runBlocking {
+//    // Flow转List
+//    flowOf(1, 2, 3, 4, 5)
+//        .toList()
+//        .filter { it > 2 }
+//        .map { it * 2 }
+//        .take(2)
+//        .forEach {
+//            println(it)
+//        }
+//
+//    // List转Flow
+//    listOf(1, 2, 3, 4, 5)
+//        .asFlow()
+//        .filter { it > 2 }
+//        .map { it * 2 }
+//        .take(2)
+//        .collect {
+//            println(it)
+//        }
+//}
+//
+///*
+//输出结果
+//6
+//8
+//6
+//8
+//*/

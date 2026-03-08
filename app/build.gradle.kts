@@ -199,7 +199,6 @@ dependencies {
 
     // 虚化效果
     implementation("jp.wasabeef:blurry:4.0.1")
-    implementation("net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3")
 
     // implementation("com.jakewharton.rxbinding3:rxbinding:3.1.0")
     // implementation("com.github.JakeWharton.RxBinding:rxbinding:3.0.0")
@@ -208,4 +207,5 @@ dependencies {
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.13")
 
+    implementation(project(mapOf("path" to ":fluid-markdown")))
 }

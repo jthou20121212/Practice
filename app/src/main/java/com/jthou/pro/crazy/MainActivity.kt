@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -14,7 +15,9 @@ import com.demo.MaterialDateActivity
 import com.demo.PlateActivity
 import com.demo.ProgressBarActivity
 import com.demo.SimpleActivity
+import com.fluid.afm.ui.MarkDownPreviewActivity
 import com.gyf.immersionbar.ImmersionBar
+import com.jank.TraceRecycleActivity
 import com.jthou.pro.crazy.databinding.ActivityMainBinding
 import com.jthou.pro.crazy.eventdispatch.EventDispatchActivity
 import com.jthou.pro.handler.BlockTestActivity
@@ -34,6 +37,7 @@ import com.study.ScrollerTextViewActivity
 import com.study.ShadowActivity
 import com.study.SparseArrayTestActivity
 import com.study.ToastWindowManagerBadTokenExceptionActivity
+import com.study.WebViewSearchActivity
 import com.study.WechatPullScrollViewActivity
 import com.study.WechatPullSmartRefreshLayoutActivity
 import com.study.asm.ImageMonitorActivity
@@ -64,6 +68,7 @@ import com.study.viewmodel.ViewModelActivity
 import com.study.widget.ScaleableImageActivity
 import com.utils.dp
 import com.work.FragmentTestActivity
+import com.work.TextMagnifierActivity
 import com.work.VideoLiftActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import splitties.activities.start
@@ -86,6 +91,7 @@ val examples = listOf(
     Example(
         title = "工作需求测试",
         data = listOf(
+            ExampleItem(name = "解析文本右上角添加🔍", component = TextMagnifierActivity::class.java),
             ExampleItem(name = "FragmentUtils", component = FragmentTestActivity::class.java),
             ExampleItem(name = "图片模糊效果", component = ImageBlurActivity::class.java),
             ExampleItem(name = "XLog", component = XLogActivity::class.java),
@@ -192,6 +198,8 @@ val examples = listOf(
             ExampleItem(name = "这是测试的啥", component = SimpleActivity::class.java),
             ExampleItem(name = "ProgressBar", component = ProgressBarActivity::class.java),
             ExampleItem(name = "MaterialDatePicker", component = MaterialDateActivity::class.java),
+            ExampleItem(name = "卡顿", component = TraceRecycleActivity::class.java),
+            ExampleItem(name = "一个面试题", component = WebViewSearchActivity::class.java),
         )
     )
 )
@@ -241,12 +249,17 @@ class MainActivity : SwipeDismissBaseActivity() {
             }
         }
 
-        start<ImageBlurActivity>()
+        start<WebViewSearchActivity>()
 
 //        RxView.clicks(binding.tvTitle)
 //            .throttleFirst(1, TimeUnit.SECONDS)
 //            .subscribeOn(AndroidSchedulers.mainThread())
 //            .subscribe()
+
+        // val b = BackgroundThread()
+        Looper.getMainLooper().setMessageLogging {
+
+        }
 
     }
 

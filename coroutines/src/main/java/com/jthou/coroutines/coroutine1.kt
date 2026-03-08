@@ -1,49 +1,43 @@
 @file:JvmName("Coroutine1")
-package com.jthou.coroutines
-
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlin.coroutines.cancellation.CancellationException
 
-// 代码段18
-
+// 看不懂代码没关系，目前咱们只需要关心代码的执行结果
 fun main() = runBlocking {
-    val myExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        println("Catch exception: $throwable")
-    }
+    val sequence = getSequence()
+    printSequence(sequence)
+}
 
-    // 注意这里
-    val scope = CoroutineScope(coroutineContext + SupervisorJob() + myExceptionHandler)
+fun getSequence() = sequence {
+    println("Add 1")
+    yield(1)
+    println("Add 2")
+    yield(2)
+    println("Add 3")
+    yield(3)
+    println("Add 4")
+    yield(4)
+}
 
-    scope.launch {
-        async {
-            delay(100L)
-        }
-
-        launch {
-            delay(100L)
-
-        }
-        launch {
-            delay(100L)
-            1 / 0 // 故意制造异常
-        }
-
-        delay(100L)
-    }
-
-    delay(1000L)
-    println("End")
+fun printSequence(sequence: Sequence<Int>) {
+    val iterator = sequence.iterator()
+    val i = iterator.next()
+    println("Get$i")
+    val j = iterator.next()
+    println("Get$j")
+//    val k = iterator.next()
+//    println("Get$k")
+//    val m = iterator.next()
+//    println("Get$m")
 }
 
 /*
-Catch exception: ArithmeticException: / by zero
-End
+输出结果：
+Add 1
+Get1
+Add 2
+Get2
+Add 3
+Get3
+Add 4
+Get4
 */

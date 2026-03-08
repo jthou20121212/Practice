@@ -245,6 +245,15 @@
         <activity
             android:name="com.study.blur.ImageBlurActivity"
             android:exported="false" />
+        <activity
+            android:name="com.work.TextMagnifierActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.jank.TraceRecycleActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.study.WebViewSearchActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

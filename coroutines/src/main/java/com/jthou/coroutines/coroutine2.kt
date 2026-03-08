@@ -11,6 +11,8 @@ import kotlinx.coroutines.runBlocking
 fun main() = runBlocking {
     val channel = getProducer(this)
     testConsumer(channel)
+
+    println(Thread.currentThread().name)
 }
 
 fun getProducer(scope: CoroutineScope) = scope.produce {
@@ -25,16 +27,16 @@ fun getProducer(scope: CoroutineScope) = scope.produce {
 }
 
 suspend fun testConsumer(channel: ReceiveChannel<Int>) {
-    delay(100)
+    // delay(100)
     val i = channel.receive()
     println("Receive$i")
-    delay(100)
+    // delay(100)
     val j = channel.receive()
     println("Receive$j")
-    delay(100)
+    // delay(100)
     val k = channel.receive()
     println("Receive$k")
-    delay(100)
+    // delay(100)
     val m = channel.receive()
     println("Receive$m")
 }

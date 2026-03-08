@@ -1,44 +1,43 @@
-package com.jthou.coroutines
+package com.jthou.coroutines.flow
 
+import com.jthou.coroutines.logX
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.util.concurrent.Executors
 
-// 代码段7
+// 代码段17
 fun main() = runBlocking {
-    launch {
-        flow {
-            emit(1)
-            emit(2)
-            emit(3)
-        }.onCompletion { println("onCompletion first: $it") }
-            .collect {
-                println("collect: $it")
-                if (it == 2) {
-                    cancel()            // 1
-                    println("cancel")
-                }
-            }
+    val mySingleDispatcher = Executors.newSingleThreadExecutor {
+        Thread(it, "MySingleThread")
+    }.asCoroutineDispatcher()
+    val scope = CoroutineScope(mySingleDispatcher)
+    val flow = flow {
+        logX("Start")
+        emit(1)
+        logX("Emit: 1")
+        emit(2)
+        logX("Emit: 2")
+        emit(3)
+        logX("Emit: 3")
+    }
+        .flowOn(Dispatchers.IO)
+        .filter {
+            logX("Filter: $it")
+            it > 2
+        }
+        .onEach {
+            logX("onEach $it")
+        }
+
+    scope.launch { // 注意这里
+        // flow.collect()
     }
 
     delay(100L)
-
-    flowOf(4, 5, 6)
-        .onCompletion { println("onCompletion second: $it") }
-        .collect {
-            println("collect: $it")
-            // 仅用于测试，生产环境不应该这么创建异常
-            throw IllegalStateException() // 2
-        }
 }
-
-/*
-collect: 1
-collect: 2
-cancel
-onCompletion first: JobCancellationException: // 3
-collect: 4
-onCompletion second: IllegalStateException    // 4
-*/

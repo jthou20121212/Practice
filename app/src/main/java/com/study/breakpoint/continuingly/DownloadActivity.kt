@@ -18,6 +18,7 @@ import com.jthou.pro.crazy.R
 import java.io.File
 import java.net.SocketException
 import java.net.SocketTimeoutException
+import javax.net.ssl.SSLPeerUnverifiedException
 
 class DownloadActivity : AppCompatActivity() {
 
@@ -36,14 +37,10 @@ class DownloadActivity : AppCompatActivity() {
             "https://1.eu.dl.wireshark.org/osx/Wireshark%203.6.7%20Intel%2064.dmg",
             "https://r2---sn-5hne6nsd.gvt1.com/edgedl/android/studio/install/2021.2.1.16/android-studio-2021.2.1.16-mac.dmg?cms_redirect=yes&mh=SI&mip=188.166.96.124&mm=28&mn=sn-5hne6nsd&ms=nvh&mt=1662384028&mv=m&mvi=2&pl=19&rmhost=r1---sn-5hne6nsd.gvt1.com&shardbypass=sd&smhost=r3---sn-5hne6nzd.gvt1.com",
             "https://dl.clipber.com/release/android/41.apk",
+            "https://pkg-cdn-hz0.sase.eagleyun.com/app/mac/2.4.11.42/yunshu_2.4.11.42.pkg?response-content-disposition=attachment%3Bfilename%3DYunShu_2.4.11.42_NIO.pkg",
         )
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = DownloadAdapter(fetch, downloadList)
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -70,6 +67,7 @@ class DownloadActivity : AppCompatActivity() {
             holder.tvFileName.append("（$progress%）")
 
             holder.btnDownload.setOnClickListener {
+                // 不能直接设置文案，可能正在下载或者已经下载完成
                 holder.btnDownload.text = "正在检测是否支持多线程下载"
                 fetch.go(url, object : DownloadListener.SimpleDownloadListener() {
                     override fun supportRangeRequest(supported: Boolean) {
@@ -91,13 +89,29 @@ class DownloadActivity : AppCompatActivity() {
 
                     override fun downloadFailure(e: Exception) {
                         // 如果抛出超时异常
-                        if (e is SocketTimeoutException) {
-                            holder.btnDownload.post {
-                                holder.btnDownload.text = "读超时请重试"
+                        when (e) {
+                            is SocketTimeoutException -> {
+                                holder.btnDownload.post {
+                                    holder.btnDownload.text = "读超时请重试"
+                                }
                             }
-                        } else if (e is SocketException) {
-                            holder.btnDownload.post {
-                                holder.btnDownload.text = "已取消"
+
+                            is SocketException -> {
+                                holder.btnDownload.post {
+                                    holder.btnDownload.text = "已取消"
+                                }
+                            }
+
+                            is SSLPeerUnverifiedException -> {
+                                holder.btnDownload.post {
+                                    holder.btnDownload.text = "SSL证书验证失败"
+                                }
+                            }
+
+                            else -> {
+                                holder.btnDownload.post {
+                                    holder.btnDownload.text = "未知错误"
+                                }
                             }
                         }
                     }

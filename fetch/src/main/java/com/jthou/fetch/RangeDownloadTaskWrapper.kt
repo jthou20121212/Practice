@@ -157,10 +157,13 @@ class RangeDownloadTaskWrapper(private val fetch: Fetch, private val url: String
                                 MMKV.defaultMMKV().encode(key, currentRunnableDownloadLength)
                                 val newValue = downloadLength.addAndGet(length.toLong())
                                 // 避免回调太过频繁
-                                val progress = floor(newValue * 100f / contentLength).roundToInt()
-                                val oldValue = downloadProgress.getAndSet(progress)
-                                if (progress != oldValue) {
-                                    download.callback.downloadProgress(progress)
+                                val progress = newValue * 100f / contentLength
+                                val shownProgress = floor(progress).roundToInt()
+                                "progress is $progress".log()
+                                "shownProgress is $shownProgress".log()
+                                val oldValue = downloadProgress.getAndSet(shownProgress)
+                                if (shownProgress != oldValue) {
+                                    download.callback.downloadProgress(shownProgress)
                                 }
                             }
                             val incrementAndGet = downloadFinishedCount.incrementAndGet()

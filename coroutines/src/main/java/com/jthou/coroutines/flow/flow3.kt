@@ -1,30 +1,39 @@
-package com.jthou.coroutines
+package com.jthou.coroutines.flow
 
+import com.jthou.coroutines.logX
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
+import java.util.concurrent.Executors
 
+// 代码段15
 
-// 代码段6
 fun main() = runBlocking {
+    val mySingleDispatcher = Executors.newSingleThreadExecutor {
+        Thread(it, "MySingleThread")
+    }.asCoroutineDispatcher()
+    val scope = CoroutineScope(mySingleDispatcher)
     flowOf(1, 2, 3, 4, 5)
-        .onCompletion { println("onCompletion") } // 注意这里
+        .filter { it > 2 }
+        .map { it * 2 }
+        .take(2)
+        .flowOn(Dispatchers.IO)
         .filter {
-            println("filter: $it")
+            logX("Filter: $it")
             it > 2
         }
-        .take(2)
-        .collect {
-            println("collect: $it")
+        .onEach {
+            logX("onEach $it")
         }
-}
+        .launchIn(scope)
 
+    Unit
+}
 /*
-输出结果
-filter: 1
-filter: 2
-filter: 3
-collect: 3
-filter: 4
-collect: 4
-onCompletion
+输出结果：
+onEach{}将运行在MySingleThread
+filter{}运行在MySingleThread
+flow{}运行在DefaultDispatcher
 */

@@ -5,36 +5,53 @@ import kotlinx.coroutines.*
 
 
 
-// 代码段8
+// 代码段3
 
 fun main() = runBlocking {
-    println("Before launch.")  // 1
-//               变化在这里
-//                  ↓
-    launch(Dispatchers.Unconfined) {
-        println("In launch.")  // 2
+    //                  变化在这里
+    //                      ↓
+    val job = launch(start = CoroutineStart.LAZY) {
+        logX("Coroutine start!")
         delay(1000L)
-        println("End launch.") // 3
     }
-    println("After launch")    // 4
+    delay(500L)
+    job.log()
+//    job.start()     // 变化在这里
+//    job.log()
+    delay(500L)
+    job.cancel()
+    delay(500L)
+    job.log()
+    delay(2000L)
+    logX("Process end!")
 }
 
 /*
 输出结果：
 ================================
-Before launch.
+isActive = false
+isCancelled = false
+isCompleted = false
 Thread:main @coroutine#1
 ================================
 ================================
-In launch.
+isActive = true
+isCancelled = false
+isCompleted = false
+Thread:main @coroutine#1
+================================
+================================
+Coroutine start!
 Thread:main @coroutine#2
 ================================
 ================================
-After launch
+isActive = false
+isCancelled = true
+isCompleted = true
 Thread:main @coroutine#1
 ================================
 ================================
-End launch.
-Thread:kotlinx.coroutines.DefaultExecutor @coroutine#2
+Process end!
+Thread:main @coroutine#1
 ================================
 */

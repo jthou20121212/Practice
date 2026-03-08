@@ -1,62 +1,57 @@
 package com.jthou.coroutines.channel
 
+import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.channels.produce
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-// 代码段1
-
+// 代码段8
 fun main() = runBlocking {
-    // 1，创建管道
-    val channel = Channel<Int>()
+    val startTime = System.currentTimeMillis()
+    val channel1 = produce {
+        send(1)
+        delay(50L)
+        send(2)
+        delay(50L)
+        send(3)
+        delay(150L)
+    }
 
-    launch {
-        // 2，在一个单独的协程当中发送管道消息
-        (1..3).forEach {
-            channel.send(it) // 挂起函数
-            println("Send: $it")
+    val channel2 = produce {
+        delay(100L)
+        send("a")
+        delay(200L)
+        send("b")
+        delay(200L)
+        send("c")
+    }
+
+    async {
+        channel1.consumeEach {
+            println(it)
         }
     }
 
-    launch {
-        // 3，在一个单独的协程当中接收管道消息
-        for (i in channel) {  // 挂起函数
-            println("Receive: $i")
+    async {
+        channel2.consumeEach {
+            println(it)
         }
     }
 
-    println("end")
+    println("Time cost: ${System.currentTimeMillis() - startTime}")
 }
 
 /*
-================================
-end
-Thread:main @coroutine#1
-================================
-================================
-Receive: 1
-Thread:main @coroutine#3
-================================
-================================
-Send: 1
-Thread:main @coroutine#2
-================================
-================================
-Send: 2
-Thread:main @coroutine#2
-================================
-================================
-Receive: 2
-Thread:main @coroutine#3
-================================
-================================
-Receive: 3
-Thread:main @coroutine#3
-================================
-================================
-Send: 3
-Thread:main @coroutine#2
-================================
-// 4，程序不会退出
+输出结果
+1
+2
+3
+a
+b
+c
+Time cost: 989
 */
