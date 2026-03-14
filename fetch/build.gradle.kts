@@ -42,4 +42,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
     implementation("com.squareup.okhttp3:okhttp-tls:$okhttp_version")
     implementation("com.tencent:mmkv:$mmkv_version")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
+    // implementation("org.jetbrains.kotlinx:kotlinx.coroutines.flow:$kotlin_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
 }

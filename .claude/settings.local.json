@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew :markwon-core:assembleDebug:*)",
+      "Bash(./gradlew:*)"
+    ]
+  }
+}

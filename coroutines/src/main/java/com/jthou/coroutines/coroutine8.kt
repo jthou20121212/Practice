@@ -1,4 +1,4 @@
-package com.jthou.coroutines.select
+package com.jthou.coroutines
 
 // 代码段19
 import kotlinx.coroutines.*

@@ -9,6 +9,10 @@ package com.jthou.fetch
  */
 object Constants {
 
+    const val ETAG = "ETag"
+
+    const val LAST_MODIFIED = "Last-Modified"
+
     const val BYTES = "bytes"
 
     const val ACCEPT_RANGES = "Accept-Ranges"

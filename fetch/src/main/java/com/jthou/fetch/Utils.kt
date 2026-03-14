@@ -7,7 +7,9 @@ import java.security.MessageDigest
 import java.util.*
 import java.util.concurrent.*
 
-fun Any?.log() = Log.i(Fetch.TAG, this?.toString() ?: "null")
+fun Any?.log() {
+    Log.i(Fetch.TAG, this?.toString() ?: "null")
+}
 
 fun String.md5(): ByteArray = MessageDigest.getInstance("MD5").digest(this.toByteArray(Charsets.UTF_8))
 
@@ -56,16 +58,6 @@ private fun isSpace(s: String?): Boolean {
     return true
 }
 
-fun getDownloadThreadPool(): ExecutorService {
-    val cpuCoreCount = Runtime.getRuntime().availableProcessors()
-    return ThreadPoolExecutor(
-        cpuCoreCount * 2,
-        Int.MAX_VALUE,
-        1, TimeUnit.MINUTES,
-        SynchronousQueue(),
-        NamingThreadFactory("fetch-download") { runnable -> Thread(runnable) }
-    )
-}
 
 fun getContentLengthKey(url: String): String {
     val md5 = url.md5().toHex()

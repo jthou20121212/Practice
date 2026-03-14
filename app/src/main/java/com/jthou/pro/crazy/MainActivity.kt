@@ -249,7 +249,7 @@ class MainActivity : SwipeDismissBaseActivity() {
             }
         }
 
-        start<WebViewSearchActivity>()
+        start<DownloadActivity>()
 
 //        RxView.clicks(binding.tvTitle)
 //            .throttleFirst(1, TimeUnit.SECONDS)
